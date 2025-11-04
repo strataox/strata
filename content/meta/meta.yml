@@ -2,3 +2,10 @@
 site:
   title: Strata
   description: Infrastructure for operational excellence
+  url: 'https://www.strata.ng'
+  logo:
+    src: https://cdn.strata.ng/logo.svg
+    alt: Strata logo
+  pattern:
+    src: https://cdn.strata.ng/pattern.png
+    alt: Strata pebbles pattern 

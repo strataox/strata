@@ -1,5 +1,6 @@
 ---
 // @layouts/Signature.astro
+import { site } from '@scripts/data/get-meta'
 
 interface Signature {
 	title: string
@@ -10,7 +11,7 @@ interface Props {
 	data: Signature
 }
 
-const { entry, data, Content } = Astro.props as Props
+const { data } = Astro.props as Props
 const { title, description } = data
 ---
 
@@ -23,12 +24,13 @@ const { title, description } = data
 	<tr>
 		<td style='padding: 24px;'>
 			<div style='font-size: 18px; font-weight: 700; color: #101619;'>
-				{ data.title }
+				{title}
 			</div>
 			<div
 				style='font-size: 16px; color: #3b3f3f; font-style: italic; margin-top: -2px;'>
-				{ data.description }
+				{description}
 			</div>
+
 			<table
 				role='presentation'
 				cellpadding='0'
@@ -37,34 +39,36 @@ const { title, description } = data
 				<tr>
 					<td>
 						<img
-							src='https://cdn.strata.ng/logo.svg'
+							src={site.logo.src}
 							width='112'
-							alt='Strata logo'
+							alt={site.logo.alt}
 							style='display: block; height: auto; border: 0;'
 						/>
 					</td>
 				</tr>
 			</table>
+
 			<div
 				style='margin-top: 12px; font-size: 18px; color: #0a4e74; font-weight: 500; font-style: italic;'>
-				Infrastructure for operational excellence
+				{site.description}
 			</div>
+
 			<div style='margin-top: -1px;'>
 				<a
-					href='https://www.strata.ng'
-					style='color: #0c6291; text-decoration: none; font-weight: 500;'
-					>www.strata.ng</a
-				>
+					href={site.url}
+					style='color: #0c6291; text-decoration: none; font-weight: 500;'>
+					{site.url.replace('https://', '')}
+				</a>
 			</div>
 		</td>
 	</tr>
 	<tr>
 		<td style='padding: 0;'>
 			<img
-				src='https://cdn.strata.ng/pattern.png'
+				src={site.pattern.src}
 				width='600'
 				height='56'
-				alt='Background pattern'
+				alt={site.pattern.alt}
 				style='display: block; width: 600px; max-width: 100%; height: auto; border: 0;'
 			/>
 		</td>
