@@ -1,0 +1,33 @@
+---
+// Base.astro
+
+import Head from '@layouts/shell/Head.astro'
+
+interface Props extends HTMLAttributes {
+	class?: string
+}
+
+const { data, class: classes, ...attrs } = Astro.props as Props
+---
+
+<!doctype html>
+<html
+	lang='en'
+	class:list={[
+		'min-h-screen overflow-x-clip scroll-smooth bg-(--color-surface)',
+		'flex flex-col',
+		'scroll-p-15 lg:scroll-p-18',
+		classes,
+	]}>
+	<Head
+		title={data.title}
+		description={data.description}
+	/>
+	<body>
+		<main
+			id='main'>
+			<slot />
+		</main>
+		<script src='@scripts/global.js'></script>
+	</body>
+</html>

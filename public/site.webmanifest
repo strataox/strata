@@ -1,0 +1,20 @@
+{
+    "name": "Farmtech Integrated Services",
+    "short_name": "Farmtech",
+    "description": "Functional farming powered by renewable energy.",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#0a0a0a",
+    "display": "standalone"
+}

@@ -1,0 +1,40 @@
+---
+// @layouts/Head.astro
+
+import { SEO } from 'astro-seo'
+import '@styles/theme.css'
+import '@styles/global.css'
+import { site } from '@scripts/data/get-meta'
+
+interface Props {
+	title?: string
+	description?: string
+	noindex?: boolean
+	nofollow?: boolean
+}
+
+const { title, description, noindex, nofollow } = Astro.props as Props
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString()
+const finalTitle = title ?? site.title
+const finalDescription = description ?? site.description
+const titleTemplate = `${site.title} | ${finalTitle}`
+---
+
+<head>
+	<meta charset='UTF-8' />
+	<meta name='viewport' content='width=device-width' />
+	<link rel='icon' href='/favicon.svg' />
+	<meta name='view-transition' content='same-origin' />
+	<link rel='sitemap' href='/sitemap-index.xml' />
+	<link rel='author' href='/humans.txt' />
+	<link rel='manifest' href='/site.webmanifest' />
+
+	<SEO
+		title={finalTitle}
+		titleTemplate={titleTemplate}
+		description={finalDescription}
+		canonical={canonicalUrl}
+		noindex={noindex}
+		nofollow={nofollow}
+	/>
+</head>

@@ -1,0 +1,58 @@
+---
+// @pages/[...slug].astro
+
+import { getCollection, render } from 'astro:content'
+import Base from '@layouts/core/Base.astro'
+import { components } from '@scripts/components/components'
+import { _isChildRoute } from '@scripts/utils/is-child-route'
+import Signature from '@layouts/templates/Signature.astro'
+
+export async function getStaticPaths() {
+	const collections = [
+		'pages',
+		'signatures',
+	] as const
+
+	const all = await Promise.all(collections.map((c) => getCollection(c)))
+	const map = Object.fromEntries(collections.map((c, i) => [c, all[i]]))
+
+	return collections.flatMap((collection) => {
+		return map[collection]
+			.filter((entry) => {
+				if (entry.data.draft) return false
+				if (collection === 'pages' && entry.id === 'pages/contact')
+					return false
+				return true
+			})
+			.map((entry) => {
+				let slug = entry.id
+				if (collection === 'pages') {
+					slug =
+						entry.id === 'pages/home'
+							? '/'
+							: entry.id.replace(/^pages\//, '')
+				}
+				return {
+					params: { slug },
+					props: { entry },
+				}
+			})
+	})
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+const { pathname } = Astro.url
+
+const isSignature = _isChildRoute(pathname, 'signatures')
+---
+
+<Base data={entry.data}>
+	{
+		isSignature ? (
+			<Signature entry={entry} data={entry.data} Content={Content} />
+		) : (
+			<Content components={components} />
+		)
+	}
+</Base>
