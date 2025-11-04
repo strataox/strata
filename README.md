@@ -1,2 +1,2 @@
-# K16E Product Design
-Global Good Design Consultants
+# Strata
+Infrastructure for operational excellence
