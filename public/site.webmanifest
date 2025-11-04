@@ -1,7 +1,7 @@
 {
-    "name": "Farmtech Integrated Services",
-    "short_name": "Farmtech",
-    "description": "Functional farming powered by renewable energy.",
+    "name": "Strata",
+    "short_name": "Strata",
+    "description": "Infrastructure for operational excellence",
     "icons": [
         {
             "src": "/favicon.png",
