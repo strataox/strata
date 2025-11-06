@@ -6,6 +6,7 @@ import Base from '@layouts/core/Base.astro'
 import { components } from '@scripts/components/components'
 import { _isChildRoute } from '@scripts/utils/is-child-route'
 import Signature from '@layouts/templates/Signature.astro'
+import SignatureV2 from '@layouts/templates/SignatureV2.astro'
 
 export async function getStaticPaths() {
 	const collections = [
@@ -50,7 +51,7 @@ const isSignature = _isChildRoute(pathname, 'signatures')
 <Base data={entry.data}>
 	{
 		isSignature ? (
-			<Signature entry={entry} data={entry.data} Content={Content} />
+			<SignatureV2 entry={entry} data={entry.data} Content={Content} />
 		) : (
 			<Content components={components} />
 		)

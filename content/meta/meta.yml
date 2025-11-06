@@ -4,8 +4,8 @@ site:
   description: Infrastructure for operational excellence
   url: 'https://www.strata.ng'
   logo:
-    src: https://cdn.strata.ng/logo.svg
+    src: https://cdn.strata.ng/logo.png
     alt: Strata logo
   pattern:
     src: https://cdn.strata.ng/pattern.png
-    alt: Strata pebbles pattern 
+    alt: Strata pebbles pattern
