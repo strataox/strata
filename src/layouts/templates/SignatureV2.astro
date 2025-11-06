@@ -54,8 +54,11 @@ const { title, description } = data
 			<div style='margin-top: -2px;'>
 				<a
 					href={site.url}
-					style='color: #0c6291; text-decoration: none; font-weight: 600;'>
-					{site.url.replace('https://', '')}
+					target='_blank'
+					style='color: #0c6291; text-decoration: none; font-weight: 500;'>
+					<span style='text-decoration: none; color: inherit;'>
+						{site.url.replace('https://', '')}
+					</span>
 				</a>
 			</div>
 		</td>
