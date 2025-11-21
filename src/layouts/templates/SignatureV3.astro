@@ -21,14 +21,15 @@ const { title, description } = data
 	cellpadding='0'
 	cellspacing='0'
 	width='600'
-	style="width: 600px; max-width: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.45; color: #101619; background-color: #E7EFF4; border-radius: 16px; overflow: hidden; margin: 32px 0;">
+	style="width: 600px; max-width: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.45; background-color: #E7EFF4; border-radius: 16px; overflow: hidden; margin: 32px 0;">
 	<tr>
 		<td style='padding: 16px 16px 10px;'>
 			<!-- NAME + TITLE -->
 			<div style='font-size: 16px; font-weight: 700; color: #101619;'>
 				{title}
 			</div>
-			<div style='font-size: 14px; color: #3b3f3f; margin-top: -2px;'>
+			<div
+				style='font-size: 14px; font-weight: 500; color: #3b3f3f; margin-top: -2px;'>
 				{description}
 			</div>
 
@@ -66,7 +67,7 @@ const { title, description } = data
 							<a
 								href={site.url}
 								target='_blank'
-								style='color: #0c6291; text-decoration: none; font-weight: 500; font-size: 14px;'>
+								style='color: #586e7a; text-decoration: none; font-weight: 500; font-size: 14px;'>
 								<span
 									style='text-decoration: none; color: inherit;'>
 									{site.url.replace('https://', '')}
