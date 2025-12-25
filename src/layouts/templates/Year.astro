@@ -1,0 +1,24 @@
+---
+// @layouts/templates/Year.astro
+
+import { components } from '@scripts/components/components'
+
+interface Props {
+	entry: any
+	data: {
+		title: string
+		description: string
+	}
+	Content: any
+	headings?: any
+}
+
+const { data, Content } = Astro.props as Props
+---
+
+<section>
+	<h1>{data.title}</h1>
+	<p>{data.description}</p>
+
+	<Content components={components} />
+</section>

@@ -3,9 +3,11 @@
 import { meta } from '@scripts/collections/meta'
 import { pages } from '@scripts/collections/pages'
 import { signatures } from '@scripts/collections/signatures'
+import { year } from '@scripts/collections/year'
 
 export const collections = {
-    meta,
-    pages,
-    signatures,
+	meta,
+	pages,
+	signatures,
+	year,
 }
