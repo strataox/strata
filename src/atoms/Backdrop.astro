@@ -1,0 +1,31 @@
+---
+// @atoms/Backdrop.astro
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+	class?: string
+}
+
+const { tag: Backdrop = 'div', class: classes, ...attrs } = Astro.props as Props
+---
+
+<Backdrop
+	aria-hidden='true'
+	{...attrs}
+	class:list={[
+		'pointer-events-none absolute inset-0 -z-10 overflow-hidden',
+		classes,
+	]}>
+	<!-- Base fill -->
+	<div class='absolute inset-0 bg-[#EFE9DD]'></div>
+
+	<!-- Radial overlay -->
+	<div
+		class='absolute inset-0 bg-radial from-[rgba(230,195,154,0.3)] via-[#EFE9DD] to-[#EFE9DD] bg-position-[75%_70%]'>
+	</div>
+
+	<!-- Linear overlay -->
+	<div
+		class='absolute inset-0 bg-linear-to-b from-white to-[#EFE9DD]/90'>
+	</div>
+</Backdrop>

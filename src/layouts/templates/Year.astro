@@ -3,6 +3,7 @@
 
 import Icon from '@atoms/Icon.astro'
 import { components } from '@scripts/components/components'
+import Backdrop from '@atoms/Backdrop.astro'
 
 interface Props {
 	entry: any
@@ -17,17 +18,18 @@ interface Props {
 const { data, Content } = Astro.props as Props
 ---
 
-<div class='max-w-384 mx-auto w-full'>
-	<header class='p-[clamp(1rem,2.5vw,2.5rem)]'>
+<div class='max-w-384 mx-auto w-full p-[clamp(1rem,2.5vw,2.5rem)]'>
+	<Backdrop />
+	<header class='pb-[clamp(1rem,2.5vw,2.5rem)]'>
 		<div>
 			<Icon name='logo' class='w-[clamp(6.5rem,8vw,7.5rem)]' />
 		</div>
 	</header>
+
+	<section>
+		<h1>{data.title}</h1>
+		<p>{data.description}</p>
+
+		<Content components={components} />
+	</section>
 </div>
-
-<section>
-	<h1>{data.title}</h1>
-	<p>{data.description}</p>
-
-	<Content components={components} />
-</section>
