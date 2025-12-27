@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes {
 const { tag: Masthead = 'div', class: classes, ...attrs } = Astro.props as Props
 ---
 
-<Masthead {...attrs} class:list={['masthead', classes]}>
+<Masthead {...attrs} class:list={['pbl-masthead', classes]}>
 	<Icon
 		name='masthead-25'
 		class='block h-auto w-[clamp(0px,calc(100vw-3rem),60rem)]'
