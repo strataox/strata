@@ -25,13 +25,12 @@ const { data } = Astro.props as Props
 const { hero } = data
 ---
 
-<div
-	class='relative isolate max-w-420 mx-auto w-full min-h-dvh p-[clamp(1rem,2.5vw,2.5rem)]'>
+<div class='relative isolate max-w-420 mx-auto w-full min-h-dvh'>
 	<Backdrop />
 
 	<div
 		class='grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 auto-rows-min items-start'>
-		<header class='col-span-full'>
+		<header class='col-span-full p-[clamp(1rem,2.5vw,2.5rem)]'>
 			<Icon name='logo' class='w-[clamp(6rem,7vw,7.5rem)]' />
 		</header>
 
