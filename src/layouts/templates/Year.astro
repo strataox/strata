@@ -4,18 +4,26 @@
 import Icon from '@atoms/Icon.astro'
 import { components } from '@scripts/components/components'
 import Backdrop from '@atoms/Backdrop.astro'
+import Masthead from '@blocks/Masthead.astro'
 
 interface Props {
 	entry: any
 	data: {
 		title: string
 		description: string
+		hero: {
+			pretitle: string
+			title: string
+			subtitle: string
+			lede: string
+		}
 	}
 	Content: any
 	headings?: any
 }
 
 const { data, Content } = Astro.props as Props
+const { hero } = data
 ---
 
 <div class='max-w-384 mx-auto w-full p-[clamp(1rem,2.5vw,2.5rem)]'>
@@ -26,10 +34,5 @@ const { data, Content } = Astro.props as Props
 		</div>
 	</header>
 
-	<section>
-		<h1>{data.title}</h1>
-		<p>{data.description}</p>
-
-		<Content components={components} />
-	</section>
+	<Masthead hero={hero} />
 </div>

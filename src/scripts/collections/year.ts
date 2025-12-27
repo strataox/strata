@@ -15,5 +15,13 @@ export const year = defineCollection({
 				.string()
 				.max(160, 'Description must not exceed 160 characters'),
 			draft: z.boolean().default(false),
+			hero: z
+				.object({
+					pretitle: z.string().max(40).optional(),
+					title: z.string().max(60),
+					subtitle: z.string().max(60).optional(),
+					lede: z.string().max(140).optional(),
+				})
+				.optional(),
 		}),
 })
