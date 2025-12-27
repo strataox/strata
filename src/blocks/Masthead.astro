@@ -1,36 +1,19 @@
 ---
 // @blocks/Masthead.astro
 
+import Icon from '@atoms/Icon.astro'
+
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
 	class?: string
-	hero: {
-		pretitle: string
-		title: string
-		subtitle: string
-		lede: string
-	}
 }
 
-const {
-	tag: Masthead = 'div',
-	class: classes,
-	hero,
-	...attrs
-} = Astro.props as Props
+const { tag: Masthead = 'div', class: classes, ...attrs } = Astro.props as Props
 ---
 
-<Masthead {...attrs} class:list={['inline-grid grid-cols-[auto]', classes]}>
-	<p
-		class='text-[clamp(0.55rem,3.2vw,2.5rem)] font-medium tracking-[-0.04em] justify-self-end translate-y-[clamp(0.7rem,2.5vw,2.5rem)]'>
-		{hero.pretitle}
-	</p>
-	<h1
-		class='text-[clamp(3.25rem,15vw,11.5rem)] tracking-tight leading-[0.96] font-semibold'>
-		{hero.title}
-	</h1>
-	<p
-		class='text-[clamp(1.595rem,5.75vw,5.65rem)] font-medium leading-[0.95] uppercase tracking-widest ml-1'>
-		{hero.subtitle}
-	</p>
+<Masthead {...attrs} class:list={['masthead', classes]}>
+	<Icon
+		name='masthead-25'
+		class='block h-auto w-[clamp(0px,calc(100vw-4rem),60rem)]'
+	/>
 </Masthead>
