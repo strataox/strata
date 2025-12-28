@@ -2,7 +2,8 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-
+    /* Fonts */
+    --font-script: 'Nanum Pen Script', ui-rounded, system-ui, sans-serif;
 }
 
 @import './utils.css';
