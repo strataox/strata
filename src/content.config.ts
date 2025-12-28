@@ -2,6 +2,7 @@
 
 import { meta } from '@scripts/collections/meta'
 import { pages } from '@scripts/collections/pages'
+import { quotes } from '@scripts/collections/quotes'
 import { signatures } from '@scripts/collections/signatures'
 import { year } from '@scripts/collections/year'
 
@@ -10,4 +11,5 @@ export const collections = {
 	pages,
 	signatures,
 	year,
+	quotes,
 }
