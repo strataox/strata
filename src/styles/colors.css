@@ -1,0 +1,29 @@
+/* src/styles/colors.css */
+
+@theme {
+    /* Base */
+    --base-white: #ffffff;
+    --base-black: #000000;
+
+    /* Blue scale, Felix */
+    --color-blue-50:  #e7eff4;
+    --color-blue-100: #cee0e9;
+    --color-blue-150: #b6d0de;
+    --color-blue-200: #9ec0d3;
+    --color-blue-250: #86b1c8;
+    --color-blue-300: #6da1bd;
+    --color-blue-350: #5591b2;
+    --color-blue-400: #3d81a7;
+    --color-blue-450: #24729c;
+    --color-blue-500: #0c6291;
+
+    --color-blue-550: #0b5883;
+    --color-blue-600: #0a4e74;
+    --color-blue-650: #084566;
+    --color-blue-700: #073b57;
+    --color-blue-750: #063149;
+    --color-blue-800: #05273a;
+    --color-blue-850: #041d2c;
+    --color-blue-900: #02141d;
+    --color-blue-950: #010a0f;
+}
