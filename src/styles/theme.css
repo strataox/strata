@@ -5,7 +5,8 @@
 		--bg-elevated: var(--color-blue-50);
 
 		--text-emphasis: var(--color-blue-900);
-		--text-body: var(--color-blue-800);
+		--text-body: var(--color-slate-500);
+		--text-body-dark-fixed: var(--color-slate-500);
 		--text-muted: var(--color-blue-700);
 
 		--border-default: var(--color-blue-100);
@@ -14,13 +15,17 @@
 		--accent-fixed: var(--color-blue-500);
 		--accent-contrast: var(--base-white);
 
+        --neutral: var(--base-white);
+        --neutral-fixed-black: var(--base-black);
+
 		@media (prefers-color-scheme: dark) {
 			/* Semantic usage, dark */
 			--bg-primary: var(--color-blue-900);
 			--bg-elevated: var(--color-blue-850);
 
 			--text-emphasis: var(--base-white);
-			--text-body: var(--color-blue-100);
+			--text-body: var(--color-slate-200);
+		    --text-body-dark-fixed: var(--color-slate-500);
 			--text-muted: var(--color-blue-200);
 
 			--border-default: var(--color-blue-750);

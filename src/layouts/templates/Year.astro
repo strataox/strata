@@ -12,12 +12,6 @@ interface Props {
 	data: {
 		title: string
 		description: string
-		hero: {
-			pretitle: string
-			title: string
-			subtitle: string
-			lede: string
-		}
 	}
 	Content: any
 	headings?: any
@@ -36,14 +30,27 @@ const pull = quote?.data?.quote?.pull
 
 	<div
 		class='grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 auto-rows-min items-start'>
-		<header class='col-span-full p-[clamp(1rem,2.5vw,2.5rem)]'>
+		<header class='col-span-full p-(--space-page)'>
 			<Icon name='logo' class='w-[clamp(6rem,7vw,7.5rem)]' />
 		</header>
-
-		{pull && <Quote pull={pull} />}
+		<aside
+			class:list={[
+				'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9',
+				'p-(--space-page) md:py-0!',
+			]}>
+			{pull && <Quote pull={pull} />}
+		</aside>
 
 		<Masthead
-			class='col-span-full justify-self-center lg:col-start-2 lg:col-span-10 p-[clamp(1rem,2.5vw,2.5rem)]'
+			class='col-span-full justify-self-center lg:col-start-2 lg:col-span-10 p-(--space-page) lg:pb-0'
 		/>
+		<p
+			class:list={[
+				'col-span-full row-start-4 lg:col-start-8 lg:col-end-11 lg:justify-self-end',
+				'p-(--space-page) lg:px-0 lg:p-0',
+				'text-(--text-body-dark-fixed) text-lg lg:text-xl leading-snug max-w-[42ch]',
+			]}>
+			{data.description}
+		</p>
 	</div>
 </div>

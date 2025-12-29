@@ -10,28 +10,20 @@ interface Props extends HTMLAttributes {
 }
 
 const {
-	tag: Quote = 'aside',
+	tag: Quote = 'div',
 	pull,
 	class: classes,
 	...attrs
 } = Astro.props as Props
 ---
 
-<Quote
-	{...attrs}
-	class:list={[
-		'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9',
-		'p-[clamp(1rem,2.5vw,2.5rem)] md:py-0!',
-		classes,
-	]}>
+<Quote {...attrs} class:list={['pbl-quote', classes]}>
 	<div
-		class:list={[
-			'rotate-[-5deg] origin-top-left -translate-y-px md:-translate-y-4',
-		]}>
+		class='rotate-[-5deg] origin-top-left -translate-y-px md:-translate-y-4'>
 		<blockquote
 			class:list={[
 				'text-lg md:text-xl leading-tight font-script text-(--accent-fixed) mx-auto max-w-[45ch]',
-                'line-clamp-3'
+				'line-clamp-3',
 			]}>
 			{`"${pull}"`}
 		</blockquote>

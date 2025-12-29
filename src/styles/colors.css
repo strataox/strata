@@ -26,4 +26,26 @@
     --color-blue-850: #041d2c;
     --color-blue-900: #02141d;
     --color-blue-950: #010a0f;
+
+    /* Slate scale, Great Void (overrides Tailwind slate) */
+    --color-slate-50:  #eceeef;
+    --color-slate-100: #d8dddf;
+    --color-slate-150: #c5cdd0;
+    --color-slate-200: #b1bcc0;
+    --color-slate-250: #9eabb0;
+    --color-slate-300: #8b9aa0;
+    --color-slate-350: #778990;
+    --color-slate-400: #647981;
+    --color-slate-450: #506871;
+    --color-slate-500: #3d5761;
+
+    --color-slate-550: #374e57;
+    --color-slate-600: #31464e;
+    --color-slate-650: #2b3d44;
+    --color-slate-700: #25343a;
+    --color-slate-750: #1f2c31;
+    --color-slate-800: #182327;
+    --color-slate-850: #121a1d;
+    --color-slate-900: #0c1113;
+    --color-slate-950: #06090a;
 }
