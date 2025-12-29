@@ -9,4 +9,8 @@
     --font-script: 'Nanum Pen Script', ui-rounded, system-ui, sans-serif;
 }
 
+button { text-align: inherit; @apply cursor-pointer; }
+svg { @apply pointer-events-none shrink-0 fill-current; }
+button > span { @apply pointer-events-none; }
+
 @import './utils.css';

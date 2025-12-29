@@ -39,10 +39,29 @@ const quote = quotes[0]
 
 		{
 			quote && (
-				<aside class='col-span-full md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9 row-start-2 p-[clamp(1rem,2.5vw,2.5rem)] md:py-0!'>
-					<blockquote class='text-xl leading-tight max-w-[45ch] mx-auto font-script text-(--accent-fixed) rotate-[-5deg] origin-top-left -translate-y-1 md:-translate-y-2'>
-						{`"${quote.data.quote.pull}"`}
-					</blockquote>
+				<aside
+					class:list={[
+						'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9',
+						'p-[clamp(1rem,2.5vw,2.5rem)] md:py-0!',
+					]}>
+					<div
+						class:list={[
+							'mx-auto max-w-[40ch] rotate-[-5deg] origin-top-left -translate-y-px md:-translate-y-1',
+						]}>
+						<blockquote
+							class:list={[
+								'text-xl leading-tight font-script text-(--accent-fixed)',
+							]}>
+							{`"${quote.data.quote.pull}"`}
+						</blockquote>
+					</div>
+
+					<div class:list={['flex justify-center -mt-1']}>
+						<Icon
+							name='pulser'
+							class='size-2.5 text-(--accent-fixed)'
+						/>
+					</div>
 				</aside>
 			)
 		}
