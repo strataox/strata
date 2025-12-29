@@ -37,18 +37,24 @@ const pull = quote?.data?.quote?.pull
 			class:list={[
 				'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9',
 				'p-(--space-page) md:py-0!',
+				'z-30',
 			]}>
 			{pull && <Quote pull={pull} />}
 		</aside>
 
 		<Masthead
-			class='col-span-full justify-self-center lg:col-start-2 lg:col-span-10 p-(--space-page) lg:pb-0'
+			class:list={[
+				'col-span-full justify-self-center lg:col-start-2 lg:col-span-10',
+				'p-(--space-page) lg:pb-0',
+				'z-30',
+			]}
 		/>
 		<p
 			class:list={[
 				'col-span-full row-start-4 lg:col-start-8 lg:col-end-11 lg:justify-self-end',
 				'p-(--space-page) lg:px-0 lg:p-0',
 				'text-(--text-body-dark-fixed) text-lg lg:text-xl leading-snug max-w-[42ch]',
+				'z-30',
 			]}>
 			{data.description}
 		</p>
@@ -56,8 +62,8 @@ const pull = quote?.data?.quote?.pull
 		<Reel
 			class:list={[
 				'col-span-full row-start-5 flex justify-center',
-				'p-(--space-page) lg:pt-0',
-				'lg:col-start-6 lg:col-end-12',
+				'p-(--space-page)',
+				'lg:col-start-7 lg:col-end-12',
 			]}
 		/>
 	</div>
