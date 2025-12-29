@@ -18,7 +18,6 @@ interface Props {
 }
 
 const { data } = Astro.props as Props
-const { hero } = data
 
 const quotes = await _getYear('2025', 1)
 const quote = quotes?.[0]
