@@ -6,6 +6,7 @@ import Backdrop from '@atoms/Backdrop.astro'
 import Masthead from '@blocks/Masthead.astro'
 import Quote from '@blocks/partials/Quote.astro'
 import { _getYear } from '@scripts/data/get-year'
+import Reel from '@composites/Reel.astro'
 
 interface Props {
 	entry: any
@@ -51,5 +52,13 @@ const pull = quote?.data?.quote?.pull
 			]}>
 			{data.description}
 		</p>
+
+		<Reel
+			class:list={[
+				'col-span-full row-start-5 flex justify-center',
+				'p-(--space-page) lg:pt-0',
+				'lg:col-start-6 lg:col-end-12',
+			]}
+		/>
 	</div>
 </div>

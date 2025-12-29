@@ -14,24 +14,13 @@
 
         --accent: var(--color-amber-500);
         --accent-fixed: var(--color-amber-500);
+        --accent-hairline: var(--color-amber-200);
 
         --neutral: var(--base-white);
         --neutral-fixed-black: var(--base-black);
 
 		@media (prefers-color-scheme: dark) {
-			/* Semantic usage, dark */
-			--bg-primary: var(--color-blue-900);
-			--bg-elevated: var(--color-blue-850);
 
-			--text-emphasis: var(--base-white);
-			--text-body: var(--color-slate-200);
-		    --text-body-dark-fixed: var(--color-slate-500);
-			--text-muted: var(--color-blue-200);
-
-			--border-default: var(--color-blue-750);
-
-			--accent: var(--color-blue-300);
-			--accent-contrast: var(--color-blue-900);
 		}
 	}
 }

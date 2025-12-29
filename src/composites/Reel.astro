@@ -1,0 +1,16 @@
+---
+// @composites/Reel.astro
+
+import Icon from '@atoms/Icon.astro'
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+	class?: string
+}
+
+const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
+---
+
+<Reel {...attrs} class:list={['relative isolate', classes]}>
+	<Icon name='orbit' class='w-full h-auto text-(--accent-hairline)' />
+</Reel>
