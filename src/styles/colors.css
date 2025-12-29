@@ -27,7 +27,7 @@
     --color-blue-900: #02141d;
     --color-blue-950: #010a0f;
 
-    /* Slate scale, Great Void (overrides Tailwind slate) */
+    /* Slate scale, Great Void */
     --color-slate-50:  #eceeef;
     --color-slate-100: #d8dddf;
     --color-slate-150: #c5cdd0;
@@ -48,4 +48,26 @@
     --color-slate-850: #121a1d;
     --color-slate-900: #0c1113;
     --color-slate-950: #06090a;
+
+    /* Amber scale, Arrowwood */
+    --color-amber-50:  #f7f3e9;
+    --color-amber-100: #f0e7d2;
+    --color-amber-150: #e8dbbc;
+    --color-amber-200: #e0cfa5;
+    --color-amber-250: #d9c48f;
+    --color-amber-300: #d1b879;
+    --color-amber-350: #c9ac62;
+    --color-amber-400: #c1a04c;
+    --color-amber-450: #ba9435;
+    --color-amber-500: #b2881f;
+
+    --color-amber-550: #a07a1c;
+    --color-amber-600: #8e6d19;
+    --color-amber-650: #7d5f16;
+    --color-amber-700: #6b5213;
+    --color-amber-750: #594410;
+    --color-amber-800: #47360c;
+    --color-amber-850: #352909;
+    --color-amber-900: #241b06;
+    --color-amber-950: #120e03;
 }

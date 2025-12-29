@@ -1,9 +1,6 @@
 @layer base {
 	:root {
 		/* Semantic usage, light */
-		--bg-primary: var(--base-white);
-		--bg-elevated: var(--color-blue-50);
-
 		--text-emphasis: var(--color-blue-900);
 		--text-body: var(--color-slate-500);
 		--text-body-dark-fixed: var(--color-slate-500);
@@ -11,9 +8,12 @@
 
 		--border-default: var(--color-blue-100);
 
-		--accent: var(--color-blue-500);
-		--accent-fixed: var(--color-blue-500);
-		--accent-contrast: var(--base-white);
+		--primary: var(--color-blue-500);
+		--primary-fixed: var(--color-blue-500);
+		--primary-contrast: var(--base-white);
+
+        --accent: var(--color-amber-500);
+        --accent-fixed: var(--color-amber-500);
 
         --neutral: var(--base-white);
         --neutral-fixed-black: var(--base-black);
