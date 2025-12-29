@@ -1,0 +1,49 @@
+---
+// @blocks/partials/Clip.astro
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+	class?: string
+
+	video: string
+	clip?: string
+	duration?: string
+}
+
+const {
+	tag: Clip = 'div',
+	class: classes,
+	video,
+	clip,
+	duration = '3:22',
+	...attrs
+} = Astro.props as Props
+---
+
+<Clip
+	{...attrs}
+	class:list={[
+		'relative rounded-2xl bg-black',
+        'w-72 h-40.5 shrink-0',
+		classes,
+	]}>
+	<video
+		class='block size-full object-cover'
+		src={video}
+		poster={clip}
+		autoplay
+		muted
+		loop
+		playsinline
+		preload='metadata'></video>
+
+	<span
+		aria-hidden='true'
+		class:list={[
+			'absolute bottom-2 right-2',
+			'rounded-md px-2 py-1 text-xs leading-none',
+			'bg-black/55 text-white backdrop-blur-sm',
+		]}>
+		{duration}
+	</span>
+</Clip>
