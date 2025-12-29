@@ -11,22 +11,24 @@ interface Props extends HTMLAttributes {
 const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
 ---
 
-<Reel {...attrs} class:list={['transform-[translateZ(0)]', classes]}>
-	<Icon name='orbit' class='w-full h-auto text-(--accent-hairline)' />
+<Reel {...attrs} class:list={['relative', classes]}>
+	<Icon name='orbit' class='size-full text-(--accent-hairline)' />
 
 	<span
 		aria-hidden='true'
 		class:list={[
-			'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
-			'h-dvh w-px',
+			'absolute left-1/2 w-px',
+			'top-[-100vh] bottom-[-100vh]',
+			'-translate-x-1/2',
 			'bg-(--accent-hairline)',
 		]}></span>
 
 	<span
 		aria-hidden='true'
 		class:list={[
-			'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
-			'w-screen h-px',
+			'absolute top-1/2 h-px',
+			'left-[-100vw] right-[-100vw]',
+			'-translate-y-1/2',
 			'bg-(--accent-hairline)',
 		]}></span>
 </Reel>
