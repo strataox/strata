@@ -41,9 +41,10 @@ const {
 	<span
 		aria-hidden='true'
 		class:list={[
-			'absolute bottom-2 right-2',
-			'rounded-md px-2 py-1 text-xs leading-none',
-			'bg-black/55 text-white backdrop-blur-sm',
+			'absolute bottom-(--space-page) right-(--space-page) mr-(--space-page)',
+			'lg:bottom-[calc(var(--space-page)/2)] lg:right-[calc(var(--space-page)/2)] lg:mr-0',
+			'rounded-md px-2 py-1.5 text-xs font-medium leading-none',
+			'bg-(--primary)/55 text-white backdrop-blur-sm',
 		]}>
 		{duration}
 	</span>
