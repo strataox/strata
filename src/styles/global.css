@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import "./fonts.css";
 @import "./colors.css";
 @import "./theme.css";
 
@@ -14,5 +15,3 @@
 button { text-align: inherit; @apply cursor-pointer; }
 svg { @apply pointer-events-none shrink-0 fill-current; }
 button > span { @apply pointer-events-none; }
-
-@import './utils.css';
