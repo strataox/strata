@@ -34,19 +34,19 @@ const [ld, tr] = cta.trim().split(/\s+/, 2)
 		class:list={[
 			'hidden lg:flex',
 			'items-center justify-between',
-			'size-full',
-			'text-(--text-body-dark-fixed) opacity-25',
+			'size-full -mt-3',
+			'text-(--interactive-muted)',
 			'text-[clamp(2.5rem,5vw,4.5rem)] leading-none',
 			'tracking-[-0.03em]',
-			'group-hover:opacity-100',
-			'transition-opacity duration-500 ease-linear',
+			'group-hover:text-(--interactive-active)',
+			'transition-colors duration-700 ease-linear',
 		]}>
 		<span
 			class:list={[
 				'-translate-x-(--space-page)',
 				'transition-transform',
 				'duration-500',
-				'ease-[cubic-bezier(.22,0,.12,1)]',
+				'ease-[cubic-bezier(.15,0,.12,1)]',
 				'group-hover:-translate-x-[calc(var(--space-page)*0.65)]',
 				'will-change-transform',
 			]}>
@@ -58,7 +58,7 @@ const [ld, tr] = cta.trim().split(/\s+/, 2)
 				'translate-x-(--space-page)',
 				'transition-transform',
 				'duration-500',
-				'ease-[cubic-bezier(.22,0,.12,1)]',
+				'ease-[cubic-bezier(.15,0,.12,1)]',
 				'group-hover:translate-x-[calc(var(--space-page)*0.65)]',
 				'will-change-transform',
 			]}>

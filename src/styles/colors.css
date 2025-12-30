@@ -70,4 +70,26 @@
     --color-amber-850: #352909;
     --color-amber-900: #241b06;
     --color-amber-950: #120e03;
+
+    /* Stone scale, Row House */
+    --color-stone-50:  #f9f8f7;
+    --color-stone-100: #f2f1ef;
+    --color-stone-150: #eceae7;
+    --color-stone-200: #e5e3df;
+    --color-stone-250: #dfdcd7;
+    --color-stone-300: #d9d5ce;
+    --color-stone-350: #d2cec6;
+    --color-stone-400: #ccc7be;
+    --color-stone-450: #c5c0b6;
+    --color-stone-500: #bfb9ae;
+
+    --color-stone-550: #aca79d;
+    --color-stone-600: #99948b;
+    --color-stone-650: #86827a;
+    --color-stone-700: #736f68;
+    --color-stone-750: #605d57;
+    --color-stone-800: #4c4a46;
+    --color-stone-850: #393834;
+    --color-stone-900: #262523;
+    --color-stone-950: #131311;
 }
