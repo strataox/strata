@@ -23,12 +23,13 @@ const {
 <Clip
 	{...attrs}
 	class:list={[
-		'relative rounded-2xl bg-black',
-        'w-72 h-40.5 shrink-0',
+		'relative rounded-2xl overflow-clip',
+		'w-full px-(--space-page) lg:px-0',
+		'aspect-video',
 		classes,
 	]}>
 	<video
-		class='block size-full object-cover'
+		class='size-full object-cover rounded-[inherit] align-middle'
 		src={video}
 		poster={clip}
 		autoplay

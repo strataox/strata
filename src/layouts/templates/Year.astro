@@ -49,7 +49,7 @@ const v = data.video
 		<aside
 			class:list={[
 				'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9',
-				'p-(--space-page) md:py-0!',
+				'p-[calc(var(--space-page)*1.5)] md:py-0!',
 				'z-30',
 			]}>
 			{pull && <Quote pull={pull} />}
@@ -72,23 +72,26 @@ const v = data.video
 			]}>
 			{data.description}
 		</p>
-
 		<Reel
 			class:list={[
-				'col-span-full row-start-5 flex justify-center',
-				'p-(--space-page)',
+				'col-span-full row-start-5',
+				'-mt-[calc(var(--space-page)*4.5)] lg:-mt-[calc(var(--space-page)*4)]',
 				'lg:col-start-7 lg:col-end-12',
-			]}>
-			{
-				v && (
-					<Clip
-						video={v.video}
-						clip={v.clip}
-						duration={v.duration}
-						aria-label={v.title}
-					/>
-				)
-			}
-		</Reel>
+				'pointer-events-none',
+				'z-10',
+			]}
+		/>
+		<Clip
+			class:list={[
+				'col-span-full row-start-5',
+				'w-full place-self-center -mt-[calc(var(--space-page)*4.5)] lg:-mt-[calc(var(--space-page)*4)]',
+				'lg:col-start-8 lg:col-end-11',
+				'z-30',
+			]}
+			video={v.video}
+			clip={v.clip}
+			duration={v.duration}
+			aria-label={v.title}
+		/>
 	</div>
 </div>

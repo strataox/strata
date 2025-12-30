@@ -11,15 +11,16 @@ interface Props extends HTMLAttributes {
 const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
 ---
 
-<Reel
-	{...attrs}
-	class:list={['relative flex justify-center items-center', classes]}>
+<Reel {...attrs} class:list={['relative grid', classes]}>
 	<Icon
 		name='orbit'
-		class='absolute inset-0 size-ful text-(--accent-hairline)'
+		class:list={[
+			'col-start-1 row-start-1',
+			'w-full h-auto',
+			'text-(--accent-hairline)',
+			'pointer-events-none',
+		]}
 	/>
-	<slot />
-
 	<span
 		aria-hidden='true'
 		class:list={[
@@ -27,7 +28,8 @@ const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
 			'top-[-100vh] bottom-[-100vh]',
 			'-translate-x-1/2',
 			'bg-(--accent-hairline)',
-		]}></span>
+		]}
+    />
 	<span
 		aria-hidden='true'
 		class:list={[
@@ -35,5 +37,6 @@ const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
 			'left-[-100vw] right-[-100vw]',
 			'-translate-y-1/2',
 			'bg-(--accent-hairline)',
-		]}></span>
+		]}
+    />
 </Reel>
