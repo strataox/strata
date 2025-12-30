@@ -23,8 +23,7 @@ const [ld, tr] = cta.trim().split(/\s+/, 2)
 	aria-label={cta}
 	class:list={[
 		'relative grid place-items-center',
-		'select-none',
-		'cursor-pointer',
+		'select-none cursor-pointer',
 		'bg-transparent p-0 border-0',
 		'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-hairline) focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
 		'group',
@@ -36,13 +35,34 @@ const [ld, tr] = cta.trim().split(/\s+/, 2)
 			'hidden lg:flex',
 			'items-center justify-between',
 			'size-full',
-			'text-(--text-body-dark-fixed)/25',
+			'text-(--text-body-dark-fixed) opacity-25',
 			'text-[clamp(2.5rem,5vw,4.5rem)] leading-none',
-			'tracking-[-0.02em]',
-			'transition duration-200 ease-in-out',
+			'tracking-[-0.03em]',
 			'group-hover:opacity-100',
+			'transition-opacity duration-500 ease-linear',
 		]}>
-		<span class='-translate-x-(--space-page)'>{ld}</span>
-		<span class='translate-x-(--space-page)'>{tr}</span>
+		<span
+			class:list={[
+				'-translate-x-(--space-page)',
+				'transition-transform',
+				'duration-500',
+				'ease-[cubic-bezier(.22,0,.12,1)]',
+				'group-hover:-translate-x-[calc(var(--space-page)*0.65)]',
+				'will-change-transform',
+			]}>
+			{ld}
+		</span>
+
+		<span
+			class:list={[
+				'translate-x-(--space-page)',
+				'transition-transform',
+				'duration-500',
+				'ease-[cubic-bezier(.22,0,.12,1)]',
+				'group-hover:translate-x-[calc(var(--space-page)*0.65)]',
+				'will-change-transform',
+			]}>
+			{tr}
+		</span>
 	</span>
 </Playhead>
