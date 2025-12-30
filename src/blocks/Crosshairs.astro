@@ -1,5 +1,5 @@
 ---
-// @composites/Reel.astro
+// @blocks/Crosshairs.astro
 
 import Icon from '@atoms/Icon.astro'
 
@@ -8,17 +8,22 @@ interface Props extends HTMLAttributes {
 	class?: string
 }
 
-const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
+const {
+	tag: Crosshairs = 'div',
+	class: classes,
+	...attrs
+} = Astro.props as Props
 ---
 
-<Reel {...attrs} class:list={['relative grid', classes]}>
+<Crosshairs
+	{...attrs}
+	class:list={['relative grid pointer-events-none', classes]}>
 	<Icon
 		name='orbit'
 		class:list={[
 			'col-start-1 row-start-1',
-			'w-full h-auto',
+			'size-full',
 			'text-(--accent-hairline)',
-			'pointer-events-none',
 		]}
 	/>
 	<span
@@ -28,8 +33,7 @@ const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
 			'top-[-100vh] bottom-[-100vh]',
 			'-translate-x-1/2',
 			'bg-(--accent-hairline)/75',
-		]}
-    />
+		]}></span>
 	<span
 		aria-hidden='true'
 		class:list={[
@@ -37,6 +41,5 @@ const { tag: Reel = 'section', class: classes, ...attrs } = Astro.props as Props
 			'left-[-100vw] right-[-100vw]',
 			'-translate-y-1/2',
 			'bg-(--accent-hairline)/75',
-		]}
-    />
-</Reel>
+		]}></span>
+</Crosshairs>

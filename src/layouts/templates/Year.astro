@@ -7,7 +7,8 @@ import Masthead from '@blocks/Masthead.astro'
 import Quote from '@blocks/partials/Quote.astro'
 import Clip from '@blocks/partials/Clip.astro'
 import { _getQuotes } from '@scripts/data/get-quotes'
-import Reel from '@composites/Reel.astro'
+import Crosshairs from '@blocks/Crosshairs.astro'
+import Playhead from '@blocks/Playhead.astro'
 
 type VideoData = {
 	title: string
@@ -72,15 +73,28 @@ const v = data.video
 			]}>
 			{data.description}
 		</p>
-		<Reel
+
+		<Crosshairs
 			class:list={[
 				'col-span-full row-start-5',
 				'-mt-[calc(var(--space-page)*3.5)]',
 				'lg:col-start-7 lg:col-end-12',
-				'pointer-events-none',
+				'w-full aspect-square',
 				'z-10',
 			]}
 		/>
+
+		<Playhead
+			class:list={[
+				'col-span-full row-start-5',
+				'-mt-[calc(var(--space-page)*3.5)]',
+				'lg:col-start-7 lg:col-end-12',
+				'w-full aspect-square',
+				'z-40',
+			]}
+			cta={v.cta}
+		/>
+
 		<Clip
 			class:list={[
 				'col-span-full row-start-5',

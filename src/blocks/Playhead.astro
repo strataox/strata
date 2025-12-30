@@ -1,0 +1,48 @@
+---
+// @blocks/Playhead.astro
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+	class?: string
+	cta?: string
+}
+
+const {
+	tag: Playhead = 'button',
+	class: classes,
+	cta = 'Play Reel',
+	...attrs
+} = Astro.props as Props
+
+const [ld, tr] = cta.trim().split(/\s+/, 2)
+---
+
+<Playhead
+	{...attrs}
+	type={Playhead === 'button' ? 'button' : undefined}
+	aria-label={cta}
+	class:list={[
+		'relative grid place-items-center',
+		'select-none',
+		'cursor-pointer',
+		'bg-transparent p-0 border-0',
+		'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-hairline) focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
+		'group',
+		classes,
+	]}>
+	<span
+		aria-hidden='true'
+		class:list={[
+			'hidden lg:flex',
+			'items-center justify-between',
+			'size-full',
+			'text-(--text-body-dark-fixed)/25',
+			'text-[clamp(2.5rem,5vw,4.5rem)] leading-none',
+			'tracking-[-0.02em]',
+			'transition duration-200 ease-in-out',
+			'group-hover:opacity-100',
+		]}>
+		<span class='-translate-x-(--space-page)'>{ld}</span>
+		<span class='translate-x-(--space-page)'>{tr}</span>
+	</span>
+</Playhead>
