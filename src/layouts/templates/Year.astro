@@ -32,9 +32,11 @@ interface Props {
 
 const { data } = Astro.props as Props
 
-const quotes = await _getQuotes('2025', 1)
-const quote = quotes?.[0]
-const pull = quote?.data?.quote?.pull
+const quotes = await _getQuotes('2025', 2)
+const quoteA = quotes?.[0]
+const quoteB = quotes?.[1]
+const pullA = quoteA?.data?.quote?.pull
+const pullB = quoteB?.data?.quote?.pull
 const v = data.video
 ---
 
@@ -53,7 +55,7 @@ const v = data.video
 				'p-[calc(var(--space-page)*1.5)] md:py-0!',
 				'z-30',
 			]}>
-			{pull && <Quote pull={pull} />}
+			<Quote pull={pullA} />
 		</aside>
 
 		<Masthead
@@ -106,6 +108,15 @@ const v = data.video
 			clip={v.clip}
 			duration={v.duration}
 			aria-label={v.title}
+		/>
+
+		<Quote
+			class:list={[
+				'col-span-full row-auto lg:row-start-5 lg:col-start-1 lg:col-end-5',
+				'pb-(--space-page) lg:p-[calc(var(--space-page)*2)] lg:-mt-[calc(var(--space-page)*1.05)]',
+				'z-30',
+			]}
+			pull={pullB}
 		/>
 	</div>
 </div>
