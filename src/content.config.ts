@@ -1,5 +1,6 @@
 // ./src/content.config.ts
 
+import { gallery } from '@scripts/collections/gallery'
 import { meta } from '@scripts/collections/meta'
 import { pages } from '@scripts/collections/pages'
 import { quotes } from '@scripts/collections/quotes'
@@ -11,5 +12,6 @@ export const collections = {
 	pages,
 	signatures,
 	year,
-	quotes,
+    quotes,
+    gallery
 }

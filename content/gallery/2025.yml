@@ -1,0 +1,82 @@
+year: "2025"
+
+items:
+  - id: "fullhouse-001"
+    title: "Arrival"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-001.jpg"
+    altText: "Guests arriving at the venue"
+    description: ""
+    priority: 10
+    draft: false
+
+  - id: "fullhouse-002"
+    title: "First Table"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-002.jpg"
+    altText: "Guests seated around the table"
+    description: ""
+    priority: 20
+    draft: false
+
+  - id: "fullhouse-003"
+    title: "Shared Plates"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-003.jpg"
+    altText: "Shared dishes being served"
+    description: ""
+    priority: 30
+    draft: false
+
+  - id: "fullhouse-004"
+    title: "Conversation"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-004.jpg"
+    altText: "Guests engaged in conversation"
+    description: ""
+    priority: 40
+    draft: false
+
+  - id: "fullhouse-005"
+    title: "Warm Atmosphere"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-005.jpg"
+    altText: "Warm and intimate dinner setting"
+    description: ""
+    priority: 50
+    draft: false
+
+  - id: "fullhouse-006"
+    title: "Mid Dinner"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-006.jpg"
+    altText: "Dinner in progress"
+    description: ""
+    priority: 60
+    draft: false
+
+  - id: "fullhouse-007"
+    title: "Laughter"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-007.jpg"
+    altText: "Guests laughing together"
+    description: ""
+    priority: 70
+    draft: false
+
+  - id: "fullhouse-008"
+    title: "Reflections"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-008.jpg"
+    altText: "Quiet moments and reflections"
+    description: ""
+    priority: 80
+    draft: false
+
+  - id: "fullhouse-009"
+    title: "Closing Conversations"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-009.jpg"
+    altText: "Final conversations of the evening"
+    description: ""
+    priority: 90
+    draft: false
+
+  - id: "fullhouse-010"
+    title: "The Table After"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-010.jpg"
+    altText: "Table after the dinner concluded"
+    description: ""
+    priority: 100
+    draft: false 

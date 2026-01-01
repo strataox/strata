@@ -7,8 +7,10 @@ import Masthead from '@blocks/Masthead.astro'
 import Quote from '@blocks/partials/Quote.astro'
 import Clip from '@blocks/partials/Clip.astro'
 import { _getQuotes } from '@scripts/data/get-quotes'
+import { _getGallery } from '@scripts/data/get-gallery'
 import Crosshairs from '@blocks/Crosshairs.astro'
 import Playhead from '@blocks/Playhead.astro'
+import CarouselMini from '@blocks/CarouselMini.astro'
 
 type VideoData = {
 	title: string
@@ -38,6 +40,8 @@ const quoteB = quotes?.[1]
 const pullA = quoteA?.data?.quote?.pull
 const pullB = quoteB?.data?.quote?.pull
 const v = data.video
+const gallery = await _getGallery('2025', 10)
+console.log('[gallery 2025]', gallery)
 ---
 
 <div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
@@ -118,5 +122,7 @@ const v = data.video
 			]}
 			pull={pullB}
 		/>
+
+		<CarouselMini />
 	</div>
 </div>

@@ -2,17 +2,25 @@
 
 import { getCollection } from 'astro:content'
 
-export async function _getGallery(year, count) {
-	if (!year) return []
+export async function _getGallery(year, limit) {
+	const y = String(year ?? '').trim()
+	if (!y) return []
 
-	const items = await getCollection(
+	const entries = await getCollection(
 		'gallery',
-		({ data }) => data.draft !== true && data.year === String(year),
+		({ data }) => data.year === y,
 	)
 
-	if (typeof count === 'number' && count > 0) {
-		return items.slice(0, count)
-	}
+	const entry = entries?.[0]
+	if (!entry) return []
+
+	let items = Array.isArray(entry.data.items) ? entry.data.items : []
+	items = items.filter((i) => !i?.draft)
+
+	items.sort((a, b) => (a?.priority ?? 0) - (b?.priority ?? 0))
+
+	const n = Number(limit)
+	if (Number.isFinite(n) && n > 0) items = items.slice(0, n)
 
 	return items
 }
