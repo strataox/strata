@@ -41,7 +41,6 @@ const pullA = quoteA?.data?.quote?.pull
 const pullB = quoteB?.data?.quote?.pull
 const v = data.video
 const gallery = await _getGallery('2025', 10)
-console.log('[gallery 2025]', gallery)
 ---
 
 <div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
@@ -53,14 +52,14 @@ console.log('[gallery 2025]', gallery)
 			<Icon name='logo' class='w-[clamp(6rem,7vw,7.5rem)]' />
 		</header>
 
-		<aside
-			class:list={[
-				'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9',
-				'p-[calc(var(--space-page)*1.5)] md:py-0!',
-				'z-30',
-			]}>
-			<Quote pull={pullA} />
-		</aside>
+        <Quote
+            pull={pullA}
+            class:list={[
+                'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9',
+                'p-[calc(var(--space-page)*1.5)] md:py-0 xl:pr-0',
+                'z-30',
+            ]}
+        />
 
 		<Masthead
 			class:list={[
@@ -115,14 +114,23 @@ console.log('[gallery 2025]', gallery)
 		/>
 
 		<Quote
+			centered={false}
 			class:list={[
-				'col-span-full row-auto lg:row-start-5 lg:col-start-1 lg:col-end-5',
-				'pb-(--space-page) lg:p-[calc(var(--space-page)*2)] lg:-mt-[calc(var(--space-page)*1.05)]',
+				'col-span-full row-start-6 lg:row-start-5 lg:col-start-1 lg:col-end-5',
+				'p-(--space-page)',
 				'z-30',
 			]}
 			pull={pullB}
 		/>
 
-		<CarouselMini />
+		<CarouselMini
+			class:list={[
+				'col-span-full row-start-7 lg:row-start-5',
+				'lg:col-start-1 lg:col-end-6 xl:col-end-5',
+				'p-(--space-page) lg:mt-[calc(var(--space-page)*4)]',
+				'z-30',
+			]}
+			items={gallery}
+		/>
 	</div>
 </div>

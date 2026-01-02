@@ -16,8 +16,8 @@
         --accent-hairline: var(--color-amber-200);
         --accent-muted: var(--color-amber-100);
 
-        --interactive-muted: var(--color-stone-500);
-        --interactive-active: var(--color-stone-700);
+        --interactive-muted: var(--color-stone-400);
+        --interactive-active: var(--color-stone-800);
 
         --neutral: var(--base-white);
         --neutral-fixed-black: var(--base-black);

@@ -1,1 +1,20 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe distinctio corrupti error quasi assumenda ratione debitis quidem earum nemo corporis rem a animi nam, nobis qui recusandae magni suscipit nostrum?
+---
+// @blocks/CarouselMini.astro
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+}
+
+const {
+	tag: CarouselMini = 'div',
+	items = [],
+	class: classes,
+	...attrs
+} = Astro.props as Props
+---
+
+<CarouselMini {...attrs} class:list={[classes]}>
+	Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptas
+	eos illo in consectetur ut fuga velit dolorem rem, doloribus aspernatur cum
+	modi quam tempora earum ab quasi beatae numquam.
+</CarouselMini>
