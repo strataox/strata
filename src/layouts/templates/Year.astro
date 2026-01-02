@@ -47,7 +47,7 @@ const v = data.video
 
 	<div
 		class='grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 auto-rows-min items-start'>
-		<header class='col-span-full p-(--space)'>
+		<header class='pbl-header col-span-full p-(--space)'>
 			<Icon name='logo' class='w-[clamp(6rem,7vw,7.5rem)]' />
 		</header>
 
@@ -55,7 +55,7 @@ const v = data.video
 			pull={pullA}
 			class:list={[
 				'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-3 lg:col-start-10',
-				'p-(--space) md:py-0',
+				'p-(--space) md:py-0 lg:-mt-[calc(var(--space)/2)]',
 				'z-30',
 			]}
 		/>
@@ -81,7 +81,7 @@ const v = data.video
 		<Crosshairs
 			class:list={[
 				'col-span-full row-start-5',
-				'-mt-[calc(var(--space)*3.5)]',
+				'-mt-[calc(var(--space)*4)]',
 				'lg:col-start-7 lg:col-end-12',
 				'w-full aspect-square',
 				'z-10',
@@ -91,7 +91,7 @@ const v = data.video
 		<Playhead
 			class:list={[
 				'col-span-full row-start-5',
-				'-mt-[calc(var(--space)*3.5)]',
+				'-mt-[calc(var(--space)*4)]',
 				'lg:col-start-7 lg:col-end-12',
 				'w-full aspect-square',
 				'z-40',
@@ -102,7 +102,7 @@ const v = data.video
 		<Clip
 			class:list={[
 				'col-span-full row-start-5',
-				'w-full place-self-center -mt-[calc(var(--space)*3.5)]',
+				'w-full place-self-center -mt-[calc(var(--space)*4)]',
 				'lg:col-start-8 lg:col-end-11',
 				'z-30',
 			]}

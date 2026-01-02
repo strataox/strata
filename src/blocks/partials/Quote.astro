@@ -17,19 +17,22 @@ const {
 } = Astro.props as Props
 ---
 
-<Quote {...attrs} class:list={['pbl-quote', classes]}>
-	<div
-		class='rotate-[-5deg] origin-top-left -translate-y-px md:-translate-y-4'>
-		<blockquote
-			class:list={[
-				'text-xl leading-tight font-script text-(--primary-fixed) max-w-[45ch] mx-auto',
-				'line-clamp-3',
-			]}>
-			{`"${pull}"`}
-		</blockquote>
-	</div>
+<Quote
+	{...attrs}
+	class:list={[
+		'pbl-quote',
+		'rotate-[-5deg] origin-top-left -translate-y-px md:-translate-y-4',
+		classes,
+	]}>
+    <blockquote
+        class:list={[
+            'text-xl leading-tight font-script text-(--primary-fixed) max-w-[45ch] mx-auto',
+            'line-clamp-4',
+        ]}>
+        {`"${pull}"`}
+    </blockquote>
 
-	<div class:list={['flex justify-center -mt-2 md:-mt-4']}>
+	<div class:list={['flex justify-center pt-[calc(var(--space)/3.5)]']}>
 		<Icon name='pulser' class='size-2 text-(--primary-fixed)' />
 	</div>
 </Quote>

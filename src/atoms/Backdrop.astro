@@ -13,6 +13,7 @@ const { tag: Backdrop = 'div', class: classes, ...attrs } = Astro.props as Props
 	aria-hidden='true'
 	{...attrs}
 	class:list={[
+        'pbl-backdrop',
 		'pointer-events-none fixed inset-0 -z-10 overflow-hidden',
 		classes,
 	]}>
