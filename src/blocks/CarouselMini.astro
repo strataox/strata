@@ -1,6 +1,5 @@
 ---
 // @blocks/CarouselMini.astro
-
 import { _getGallery } from '@scripts/data/get-gallery'
 
 interface Props extends HTMLAttributes {
@@ -19,28 +18,23 @@ const {
 
 const gallery = await _getGallery(year, limit)
 const demo = gallery.slice(0, 3)
-
-// base side-frame width
-const base = 'clamp(4.5rem, 18vw, 6.5rem)'
 ---
 
 <CarouselMini {...attrs} class:list={[classes]}>
-	<ul class='flex items-end gap-3 overflow-hidden select-none'>
+	<ul class:list={['grid grid-cols-7 items-end', 'select-none gap-3 overflow-hidden']}>
 		{
 			demo.map((item, idx) => {
 				const isCenter = idx === 1
-				const w = isCenter ? `calc(${base} * 1.5)` : base
+				const span = isCenter ? 'col-span-3' : 'col-span-2'
 
 				return (
 					<li
 						class:list={[
-							'flex-none overflow-hidden rounded-2xl',
-							'bg-black/5 ring-1 ring-black/5',
+							span,
+							'overflow-hidden rounded-xl',
+							'aspect-4/5',
 							isCenter ? 'z-20' : 'z-10 opacity-90',
-							'transition-transform duration-300',
-							isCenter ? 'lg:w-38' : 'lg:w-26',
-						]}
-						style={`width:${w}; aspect-ratio:4 / 5;`}>
+						]}>
 						<img
 							src={item.image}
 							alt={item.altText ?? item.title}
