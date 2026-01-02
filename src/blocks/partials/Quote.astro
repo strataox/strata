@@ -12,7 +12,6 @@ interface Props extends HTMLAttributes {
 const {
 	tag: Quote = 'aside',
 	pull,
-	centered = true,
 	class: classes,
 	...attrs
 } = Astro.props as Props
@@ -23,9 +22,8 @@ const {
 		class='rotate-[-5deg] origin-top-left -translate-y-px md:-translate-y-4'>
 		<blockquote
 			class:list={[
-				'text-xl leading-tight font-script text-(--primary-fixed) max-w-[45ch]',
+				'text-xl leading-tight font-script text-(--primary-fixed) max-w-[45ch] mx-auto',
 				'line-clamp-3',
-				centered && 'mx-auto',
 			]}>
 			{`"${pull}"`}
 		</blockquote>

@@ -21,30 +21,28 @@ const demo = gallery.slice(0, 3)
 ---
 
 <CarouselMini {...attrs} class:list={[classes]}>
-	<ul class:list={['grid grid-cols-7 items-end', 'select-none gap-3 overflow-hidden']}>
+	<ul class='grid grid-cols-7 items-end gap-1 select-none'>
 		{
-			demo.map((item, idx) => {
-				const isCenter = idx === 1
-				const span = isCenter ? 'col-span-3' : 'col-span-2'
-
-				return (
-					<li
-						class:list={[
-							span,
-							'overflow-hidden rounded-xl',
-							'aspect-4/5',
-							isCenter ? 'z-20' : 'z-10 opacity-90',
-						]}>
-						<img
-							src={item.image}
-							alt={item.altText ?? item.title}
-							loading='lazy'
-							decoding='async'
-							class='h-full w-full object-cover'
-						/>
-					</li>
-				)
-			})
+			demo.map((item, idx) => (
+				<li
+					class:list={[
+						idx === 1 &&
+							'col-span-3 -translate-y-[calc(var(--space)*1.5)] sm:-translate-y-[calc(var(--space)*2.5)] lg:-translate-y-[calc(var(--space)*0.75)]',
+						idx === 0 &&
+							'col-span-2 -rotate-12 origin-bottom-left opacity-50',
+						idx === 2 &&
+							'col-span-2 rotate-12 origin-bottom-right opacity-50',
+						'overflow-hidden rounded-xl aspect-4/5 transform-gpu',
+					]}>
+					<img
+						src={item.image}
+						alt={item.altText ?? item.title}
+						loading='lazy'
+						decoding='async'
+						class='h-full w-full object-cover'
+					/>
+				</li>
+			))
 		}
 	</ul>
 </CarouselMini>
