@@ -18,19 +18,20 @@ const {
 ---
 
 <Quote
+	data-pbl-quote
 	{...attrs}
 	class:list={[
 		'pbl-quote',
 		'rotate-[-5deg] origin-top-left -translate-y-px md:-translate-y-4',
 		classes,
 	]}>
-    <blockquote
-        class:list={[
-            'text-xl leading-tight font-script text-(--primary-fixed) max-w-[45ch] mx-auto',
-            'line-clamp-4',
-        ]}>
-        {`"${pull}"`}
-    </blockquote>
+	<blockquote
+		class:list={[
+			'text-xl leading-tight font-script text-(--primary-fixed) max-w-[45ch] mx-auto',
+			'line-clamp-4',
+		]}>
+		{`"${pull}"`}
+	</blockquote>
 
 	<div class:list={['flex justify-center pt-[calc(var(--space)/3.5)]']}>
 		<Icon name='pulser' class='size-2 text-(--primary-fixed)' />
