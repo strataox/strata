@@ -26,20 +26,20 @@ const demo = gallery.slice(0, 3)
 			demo.map((item, idx) => (
 				<li
 					class:list={[
-						'overflow-clip rounded-lg aspect-4/5 transform-gpu',
+						'overflow-clip rounded-xl aspect-4/5 w-full',
 						idx === 1 &&
-							'col-span-3 -translate-y-[calc(var(--space)*1.5)] sm:-translate-y-[calc(var(--space)*2.5)] lg:-translate-y-[calc(var(--space)*0.75)]',
+							'col-span-3 -translate-y-[calc(var(--space)*1.5)] sm:-translate-y-[calc(var(--space)*2.5)] lg:-translate-y-[calc(var(--space)*0.75)] lg:max-h-44',
 						idx === 0 &&
-							'col-span-2 -rotate-12 origin-bottom-left opacity-50',
+							'col-span-2 -rotate-12 origin-bottom-left opacity-50 lg:max-h-32',
 						idx === 2 &&
-							'col-span-2 rotate-12 origin-bottom-right opacity-50',
+							'col-span-2 rotate-12 origin-bottom-right opacity-50 lg:max-h-32',
 					]}>
 					<img
 						src={item.image}
 						alt={item.altText ?? item.title}
 						loading='lazy'
 						decoding='async'
-						class='h-full w-full object-cover'
+						class='size-full object-cover object-center'
 					/>
 				</li>
 			))
