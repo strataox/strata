@@ -18,6 +18,9 @@ const {
 
 const gallery = await _getGallery(year, limit)
 const demo = gallery.slice(0, 3)
+const IMG_WIDTH = 768
+const nimg = (url: string) =>
+	`/.netlify/images?url=${encodeURIComponent(url)}&w=${IMG_WIDTH}&q=100&auto=format`
 ---
 
 <CarouselMini {...attrs} class:list={[classes]}>
@@ -35,7 +38,9 @@ const demo = gallery.slice(0, 3)
 							'col-span-2 rotate-12 origin-bottom-right opacity-50 lg:max-h-32',
 					]}>
 					<img
-						src={item.image}
+						src={nimg(item.image)}
+						srcset={`${nimg(item.image)} 1x`}
+						sizes='(min-width: 1024px) 152px, 33vw'
 						alt={item.altText ?? item.title}
 						loading='lazy'
 						decoding='async'
