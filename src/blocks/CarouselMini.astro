@@ -1,20 +1,56 @@
 ---
 // @blocks/CarouselMini.astro
 
+import { _getGallery } from '@scripts/data/get-gallery'
+
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
+	year: string
+	limit?: number
 }
 
 const {
 	tag: CarouselMini = 'div',
-	items = [],
+	year,
+	limit = 7,
 	class: classes,
 	...attrs
 } = Astro.props as Props
+
+const gallery = await _getGallery(year, limit)
+const demo = gallery.slice(0, 3)
+
+// base side-frame width
+const base = 'clamp(4.5rem, 18vw, 6.5rem)'
 ---
 
 <CarouselMini {...attrs} class:list={[classes]}>
-	Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptas
-	eos illo in consectetur ut fuga velit dolorem rem, doloribus aspernatur cum
-	modi quam tempora earum ab quasi beatae numquam.
+	<ul class='flex items-end gap-3 overflow-hidden select-none'>
+		{
+			demo.map((item, idx) => {
+				const isCenter = idx === 1
+				const w = isCenter ? `calc(${base} * 1.5)` : base
+
+				return (
+					<li
+						class:list={[
+							'flex-none overflow-hidden rounded-2xl',
+							'bg-black/5 ring-1 ring-black/5',
+							isCenter ? 'z-20' : 'z-10 opacity-90',
+							'transition-transform duration-300',
+							isCenter ? 'lg:w-38' : 'lg:w-26',
+						]}
+						style={`width:${w}; aspect-ratio:4 / 5;`}>
+						<img
+							src={item.image}
+							alt={item.altText ?? item.title}
+							loading='lazy'
+							decoding='async'
+							class='h-full w-full object-cover'
+						/>
+					</li>
+				)
+			})
+		}
+	</ul>
 </CarouselMini>

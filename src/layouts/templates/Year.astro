@@ -40,7 +40,6 @@ const quoteB = quotes?.[1]
 const pullA = quoteA?.data?.quote?.pull
 const pullB = quoteB?.data?.quote?.pull
 const v = data.video
-const gallery = await _getGallery('2025', 10)
 ---
 
 <div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
@@ -124,13 +123,13 @@ const gallery = await _getGallery('2025', 10)
 		/>
 
 		<CarouselMini
+			year='2025'
 			class:list={[
 				'col-span-full row-start-7 lg:row-start-5',
 				'lg:col-start-1 lg:col-end-6 xl:col-end-5',
 				'p-(--space) lg:mt-[calc(var(--space)*4)]',
 				'z-30',
 			]}
-			items={gallery}
 		/>
 	</div>
 </div>
