@@ -43,11 +43,11 @@ const [ld, tr] = cta.trim().split(/\s+/, 2)
 		]}>
 		<span
 			class:list={[
-				'-translate-x-(--space-page)',
+				'-translate-x-(--space)',
 				'transition-transform',
 				'duration-500',
 				'ease-[cubic-bezier(.15,0,.12,1)]',
-				'group-hover:-translate-x-[calc(var(--space-page)*0.65)]',
+				'group-hover:-translate-x-[calc(var(--space)*0.65)]',
 				'will-change-transform',
 			]}>
 			{ld}
@@ -55,11 +55,11 @@ const [ld, tr] = cta.trim().split(/\s+/, 2)
 
 		<span
 			class:list={[
-				'translate-x-(--space-page)',
+				'translate-x-(--space)',
 				'transition-transform',
 				'duration-500',
 				'ease-[cubic-bezier(.15,0,.12,1)]',
-				'group-hover:translate-x-[calc(var(--space-page)*0.65)]',
+				'group-hover:translate-x-[calc(var(--space)*0.65)]',
 				'will-change-transform',
 			]}>
 			{tr}
