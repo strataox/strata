@@ -21,11 +21,11 @@ export function _loopingQuotes() {
 
 		if (!Array.isArray(pulls) || pulls.length <= 1) return
 
-		const durationMs = Number(root.dataset.pblQuoteDuration || 7000)
+		const durationMs = Number(root.dataset.pblQuoteDuration || 10000)
 		const step =
 			Number.isFinite(durationMs) && durationMs > 0
 				? durationMs / 1000
-				: 7
+				: 10
 
 		let idx = 0
 
