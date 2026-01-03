@@ -5,20 +5,26 @@ import Icon from '@atoms/Icon.astro'
 
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
-	pull: string
+	pulls: string[]
+	duration?: number
 	class?: string
 }
 
 const {
 	tag: Quote = 'aside',
-	pull,
+	pulls = [],
+	duration = 1000,
 	class: classes,
 	...attrs
 } = Astro.props as Props
+
+const first = pulls?.[0] ?? ''
 ---
 
 <Quote
 	data-pbl-quote
+	data-pbl-quote-pulls={JSON.stringify(pulls)}
+	data-pbl-quote-duration={String(duration)}
 	{...attrs}
 	class:list={[
 		'pbl-quote',
@@ -26,14 +32,19 @@ const {
 		classes,
 	]}>
 	<blockquote
+		data-pbl-quote-text
 		class:list={[
 			'text-xl leading-tight font-script text-(--primary-fixed) max-w-[45ch] mx-auto',
-			'line-clamp-4',
+			'line-clamp-3',
 		]}>
-		{`"${pull}"`}
+		<span class='min-h-27 max-h-27'>{`"${first}"`}</span>
 	</blockquote>
 
 	<div class:list={['flex justify-center pt-[calc(var(--space)/3.5)]']}>
-		<Icon name='pulser' class='size-2 text-(--primary-fixed)' />
+		<Icon
+			data-pbl-quote-pulser
+			name='pulser'
+			class='size-2 text-(--primary-fixed)'
+		/>
 	</div>
 </Quote>

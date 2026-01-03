@@ -7,7 +7,6 @@ import Masthead from '@blocks/Masthead.astro'
 import Quote from '@blocks/partials/Quote.astro'
 import Clip from '@blocks/partials/Clip.astro'
 import { _getQuotes } from '@scripts/data/get-quotes'
-import { _getGallery } from '@scripts/data/get-gallery'
 import Crosshairs from '@blocks/Crosshairs.astro'
 import Playhead from '@blocks/Playhead.astro'
 import CarouselMini from '@blocks/CarouselMini.astro'
@@ -34,12 +33,17 @@ interface Props {
 
 const { data } = Astro.props as Props
 
-const quotes = await _getQuotes('2025', 2)
-const quoteA = quotes?.[0]
-const quoteB = quotes?.[1]
-const pullA = quoteA?.data?.quote?.pull
-const pullB = quoteB?.data?.quote?.pull
+const quoteEntries = await _getQuotes('2025')
+const pullsAll = (quoteEntries ?? [])
+	.map((q) => q?.data?.quote?.pull)
+	.filter(Boolean)
+
+const splitAt = Math.ceil(pullsAll.length / 2)
+const pullsA = pullsAll.slice(0, splitAt)
+const pullsB = pullsAll.slice(splitAt)
+
 const v = data.video
+const quoteDuration = 7000
 ---
 
 <div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
@@ -52,7 +56,8 @@ const v = data.video
 		</header>
 
 		<Quote
-			pull={pullA}
+			pulls={pullsA}
+			duration={quoteDuration}
 			class:list={[
 				'col-span-full row-start-2 md:col-span-4 md:col-start-5 lg:col-span-3 lg:col-start-10',
 				'p-(--space) md:py-0 lg:-mt-[calc(var(--space)/2)]',
@@ -113,12 +118,13 @@ const v = data.video
 		/>
 
 		<Quote
+			pulls={pullsB}
+			duration={quoteDuration}
 			class:list={[
 				'col-span-full row-start-6 lg:row-start-5 lg:col-start-1 lg:col-end-4',
 				'p-(--space)',
 				'z-30',
 			]}
-			pull={pullB}
 		/>
 
 		<CarouselMini
