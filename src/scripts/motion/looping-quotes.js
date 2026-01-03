@@ -31,11 +31,11 @@ export function _loopingQuotes() {
 
 		if (pulser) {
 			gsap.to(pulser, {
-				scale: 1.35,
+				scale: 1.25,
 				duration: 0.75,
 				repeat: -1,
 				yoyo: true,
-				ease: 'sine.inOut',
+				ease: 'power2.inOut',
 				delay: i * 0.5,
 			})
 		}
@@ -44,9 +44,9 @@ export function _loopingQuotes() {
 			.to(text, { autoAlpha: 0, duration: 0.5 })
 			.add(() => {
 				idx = (idx + 1) % pulls.length
-				text.textContent = `"${pulls[idx]}"`
+				text.textContent = pulls[idx]
 			})
-			.to(text, { autoAlpha: 1, duration: 0.25 })
+			.to(text, { autoAlpha: 1, duration: 0.35 })
 			.to({}, { duration: Math.max(0.1, step) })
 	})
 }

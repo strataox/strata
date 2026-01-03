@@ -35,12 +35,11 @@ const first = pulls?.[0] ?? ''
 		data-pbl-quote-text
 		class:list={[
 			'text-xl leading-tight font-script text-(--primary-fixed) max-w-[50ch] mx-auto',
-			'line-clamp-3',
+			'line-clamp-3 h-20 overflow-clip',
 		]}>
-		<span class='min-h-27 max-h-27'>{`"${first}"`}</span>
+		{first}
 	</blockquote>
-
-	<div class:list={['flex justify-center pt-(--space)']}>
+	<div class='ml-(--space) pt-1'>
 		<Icon
 			data-pbl-quote-pulser
 			name='pulser'
