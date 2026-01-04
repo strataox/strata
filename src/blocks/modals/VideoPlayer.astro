@@ -18,26 +18,29 @@ const {
 	{...attrs}
 	class:list={[
 		'fixed inset-0 z-50',
+		'grid place-items-center',
 		'opacity-0 pointer-events-none',
 		'scale-50',
-		'grid place-items-center',
 		classes,
 	]}>
-	<div data-pbl-video-stage class='relative size-full'>
+	<div
+		data-pbl-video-stage
+		class='relative size-full overflow-hidden bg-black'>
 		<div
 			data-pbl-video-shade-top
 			aria-hidden='true'
-			class='absolute inset-x-0 top-0 h-1/2 bg-black'>
+			class='absolute inset-x-0 top-0 h-1/2 bg-black origin-bottom'>
 		</div>
+
 		<div
-			data-pbl-video-shade-btm
+			data-pbl-video-shade-bottom
 			aria-hidden='true'
-			class='absolute inset-x-0 bottom-0 h-1/2 bg-black'>
+			class='absolute inset-x-0 bottom-0 h-1/2 bg-black origin-top'>
 		</div>
 
 		<div
 			data-pbl-video-content
-			class='relative z-10 size-full grid place-items-center text-white'>
+			class='relative z-10 size-full grid place-items-center text-white scale-90'>
 			<p class='max-w-[40ch] px-(--space) text-center'>
 				Video content placeholder
 			</p>
