@@ -10,6 +10,7 @@ import { _getQuotes } from '@scripts/data/get-quotes'
 import Crosshairs from '@blocks/Crosshairs.astro'
 import Playhead from '@blocks/Playhead.astro'
 import CarouselMini from '@blocks/CarouselMini.astro'
+import VideoPlayer from '@blocks/modals/VideoPlayer.astro'
 
 type VideoData = {
 	title: string
@@ -43,7 +44,6 @@ const pullsA = pullsAll.slice(0, splitAt)
 const pullsB = pullsAll.slice(splitAt)
 
 const v = data.video
-const quoteDuration = 10000
 ---
 
 <div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
@@ -94,6 +94,7 @@ const quoteDuration = 10000
 		/>
 
 		<Playhead
+			data-pbl-playhead
 			class:list={[
 				'col-span-full row-start-5',
 				'-mt-[calc(var(--space)*4)]',
@@ -119,7 +120,7 @@ const quoteDuration = 10000
 
 		<Quote
 			pulls={pullsB}
-			duration={quoteDuration}
+			duration={10000}
 			class:list={[
 				'col-span-full row-start-6 lg:row-start-5 lg:col-start-1 lg:col-end-4',
 				'p-(--space)',
@@ -138,4 +139,6 @@ const quoteDuration = 10000
 			]}
 		/>
 	</div>
+
+	<VideoPlayer />
 </div>

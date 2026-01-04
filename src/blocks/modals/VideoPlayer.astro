@@ -1,0 +1,46 @@
+---
+// @blocks/modals/VideoPlayer.astro
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+	class?: string
+}
+
+const {
+	tag: VideoPlayer = 'div',
+	class: classes,
+	...attrs
+} = Astro.props as Props
+---
+
+<VideoPlayer
+	data-pbl-video
+	{...attrs}
+	class:list={[
+		'fixed inset-0 z-50',
+		'opacity-0 pointer-events-none',
+		'scale-50',
+		'grid place-items-center',
+		classes,
+	]}>
+	<div data-pbl-video-stage class='relative size-full'>
+		<div
+			data-pbl-video-shade-top
+			aria-hidden='true'
+			class='absolute inset-x-0 top-0 h-1/2 bg-black'>
+		</div>
+		<div
+			data-pbl-video-shade-btm
+			aria-hidden='true'
+			class='absolute inset-x-0 bottom-0 h-1/2 bg-black'>
+		</div>
+
+		<div
+			data-pbl-video-content
+			class='relative z-10 size-full grid place-items-center text-white'>
+			<p class='max-w-[40ch] px-(--space) text-center'>
+				Video content placeholder
+			</p>
+		</div>
+	</div>
+</VideoPlayer>
