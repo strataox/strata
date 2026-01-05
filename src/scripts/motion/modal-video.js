@@ -7,9 +7,6 @@ export function _modalVideo() {
 	const modal = _q('[data-pbl-video]')
 	if (!modal) return
 
-	const stage = _q('[data-pbl-video-stage]', modal)
-	if (!stage) return
-
 	const top = _q('[data-pbl-video-shade-top]', modal)
 	const bottom = _q('[data-pbl-video-shade-bottom]', modal)
 	const content = _q('[data-pbl-video-content]', modal)
@@ -19,34 +16,60 @@ export function _modalVideo() {
 	if (!triggers.length) return
 
 	let isOpen = false
-    let tl = null
+	let tl = null
 
-    const playVideo = () => {
-		const lite = modal.querySelector('lite-youtube')
-		if (!lite) return
-		if (!lite.shadowRoot?.querySelector('iframe')) {
-			lite.click()
-		}
-    }
+	const getVideoId = () => {
+		const id = modal.dataset.pblVideoId
+		return typeof id === 'string' && id.trim() ? id.trim() : null
+	}
 
-    const resetVideo = () => {
-		const lite = modal.querySelector('lite-youtube')
-		if (!lite) return
+	const getVideoTitle = () => {
+		const t = modal.dataset.pblVideoTitle
+		return typeof t === 'string' && t.trim() ? t.trim() : 'Play video'
+	}
 
-		const clone = lite.cloneNode(true)
-		lite.replaceWith(clone)
+	const createIframe = (videoId) => {
+		const params = new URLSearchParams({
+			autoplay: '1',
+			rel: '0',
+			modestbranding: '1',
+			playsinline: '1',
+		})
+
+		const iframe = document.createElement('iframe')
+		iframe.src = `https://www.youtube.com/embed/${videoId}?${params.toString()}`
+		iframe.title = getVideoTitle()
+		iframe.allow =
+			'autoplay; encrypted-media; picture-in-picture; fullscreen'
+		iframe.allowFullscreen = true
+		iframe.setAttribute('frameborder', '0')
+
+		return iframe
+	}
+
+	const destroyIframe = () => {
+		content.replaceChildren()
 	}
 
 	const open = () => {
 		if (isOpen) return
 		isOpen = true
 
-		if (tl) tl.kill()
+		if (tl) {
+			tl.kill()
+			tl = null
+		}
+
 		gsap.killTweensOf(modal)
+		gsap.killTweensOf([top, bottom, content])
+
+		const videoId = getVideoId()
+		destroyIframe()
+		if (videoId) content.appendChild(createIframe(videoId))
 
 		gsap.set(modal, { pointerEvents: 'auto' })
 		gsap.set([top, bottom], { yPercent: 0 })
-		gsap.set(content, { scale: 0.92, autoAlpha: 0 })
+		gsap.set(content, { autoAlpha: 0, scale: 0.92 })
 
 		tl = gsap
 			.timeline()
@@ -75,32 +98,42 @@ export function _modalVideo() {
 				},
 				'-=0.25',
 			)
-			.add(playVideo)
 	}
 
 	const close = () => {
 		if (!isOpen) return
 		isOpen = false
 
-		if (tl) tl.kill()
+		if (tl) {
+			tl.kill()
+			tl = null
+		}
+
 		gsap.killTweensOf(modal)
+		gsap.killTweensOf([top, bottom, content])
 
 		gsap.to(modal, {
 			autoAlpha: 0,
 			scale: 0.5,
 			duration: 0.3,
 			ease: 'power2.in',
-            onComplete: () => {
-                resetVideo()
-                gsap.set(modal, { pointerEvents: 'none' })
-            },
+			onComplete: () => {
+				destroyIframe()
+				gsap.set(modal, { pointerEvents: 'none' })
+			},
 		})
 	}
 
 	triggers.forEach((btn) => btn.addEventListener('click', open))
 
-	window.addEventListener('keydown', (e) => {
-		if (e.key !== 'Escape') return
-		close()
-	})
+	document.addEventListener(
+		'keydown',
+		(e) => {
+			if (e.key !== 'Escape') return
+			if (!isOpen) return
+			if (document.fullscreenElement) return
+			close()
+		},
+		true,
+	)
 }

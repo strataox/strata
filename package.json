@@ -16,7 +16,6 @@
         "astro": "^5.16.6",
         "astro-seo": "^0.8.4",
         "gsap": "^3.14.2",
-        "lite-youtube-embed": "^0.3.4",
         "markdown-it": "^14.1.0",
         "motion": "^12.23.26",
         "sharp": "^0.34.5",
