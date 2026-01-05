@@ -29,8 +29,7 @@ export function _modalVideo() {
 	}
 
 	const _mountIframe = () => {
-		const videoId = _getVideoId()
-		const iframe = _createYouTubeIframe(videoId, _getVideoTitle())
+		const iframe = _createYouTubeIframe(_getVideoId(), _getVideoTitle())
 		content.appendChild(iframe)
 	}
 
