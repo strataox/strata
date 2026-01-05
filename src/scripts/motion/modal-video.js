@@ -38,14 +38,14 @@ export function _modalVideo() {
 			.to(modal, {
 				autoAlpha: 1,
 				scale: 1,
-				duration: 0.4,
+				duration: 0.3,
 				ease: 'power2.out',
 			})
 			.to(
 				[top, bottom],
 				{
 					yPercent: (i) => (i === 0 ? -100 : 100),
-					duration: 0.75,
+					duration: 0.5,
 					ease: 'power3.inOut',
 				},
 				'<0.05',
@@ -55,7 +55,7 @@ export function _modalVideo() {
 				{
 					autoAlpha: 1,
 					scale: 1,
-					duration: 0.55,
+					duration: 0.5,
 					ease: 'power2.out',
 				},
 				'-=0.25',
