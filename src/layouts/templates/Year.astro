@@ -112,7 +112,6 @@ const v = data.video
 				'lg:col-start-8 lg:col-end-11',
 				'z-30',
 			]}
-			video={v.video}
 			clip={v.clip}
 			duration={v.duration}
 			aria-label={v.title}
@@ -140,5 +139,5 @@ const v = data.video
 		/>
 	</div>
 
-	<VideoPlayer />
+	<VideoPlayer video={v.video} title={v.title} />
 </div>

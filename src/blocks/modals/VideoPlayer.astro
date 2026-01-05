@@ -1,16 +1,24 @@
 ---
 // @blocks/modals/VideoPlayer.astro
 
+import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
+
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
 	class?: string
+	video?: string
+	title?: string
 }
 
 const {
 	tag: VideoPlayer = 'div',
 	class: classes,
+	video,
+	title = 'Play video',
 	...attrs
 } = Astro.props as Props
+
+const videoId = _getYouTubeId(video)
 ---
 
 <VideoPlayer
@@ -38,12 +46,18 @@ const {
 			class='absolute inset-x-0 bottom-0 h-1/2 bg-black origin-top'>
 		</div>
 
-		<div
-			data-pbl-video-content
-			class='relative z-10 size-full grid place-items-center text-white scale-90'>
-			<p class='max-w-[40ch] px-(--space) text-center'>
-				Video content placeholder
-			</p>
-		</div>
+		{
+			videoId && (
+				<div
+					data-pbl-video-content
+					class='relative z-10 size-full grid place-items-center scale-50'>
+                    <lite-youtube
+                        videoid={videoId}
+                        playlabel={title}
+                        class='block size-full aspect-video max-w-7xl!'
+                    />
+				</div>
+			)
+		}
 	</div>
 </VideoPlayer>

@@ -19,7 +19,23 @@ export function _modalVideo() {
 	if (!triggers.length) return
 
 	let isOpen = false
-	let tl = null
+    let tl = null
+
+    const playVideo = () => {
+		const lite = modal.querySelector('lite-youtube')
+		if (!lite) return
+		if (!lite.shadowRoot?.querySelector('iframe')) {
+			lite.click()
+		}
+    }
+
+    const resetVideo = () => {
+		const lite = modal.querySelector('lite-youtube')
+		if (!lite) return
+
+		const clone = lite.cloneNode(true)
+		lite.replaceWith(clone)
+	}
 
 	const open = () => {
 		if (isOpen) return
@@ -29,7 +45,6 @@ export function _modalVideo() {
 		gsap.killTweensOf(modal)
 
 		gsap.set(modal, { pointerEvents: 'auto' })
-
 		gsap.set([top, bottom], { yPercent: 0 })
 		gsap.set(content, { scale: 0.92, autoAlpha: 0 })
 
@@ -45,7 +60,7 @@ export function _modalVideo() {
 				[top, bottom],
 				{
 					yPercent: (i) => (i === 0 ? -100 : 100),
-					duration: 0.5,
+					duration: 0.4,
 					ease: 'power3.inOut',
 				},
 				'<0.05',
@@ -55,11 +70,12 @@ export function _modalVideo() {
 				{
 					autoAlpha: 1,
 					scale: 1,
-					duration: 0.5,
+					duration: 0.4,
 					ease: 'power2.out',
 				},
 				'-=0.25',
 			)
+			.add(playVideo)
 	}
 
 	const close = () => {
@@ -74,7 +90,10 @@ export function _modalVideo() {
 			scale: 0.5,
 			duration: 0.3,
 			ease: 'power2.in',
-			onComplete: () => gsap.set(modal, { pointerEvents: 'none' }),
+            onComplete: () => {
+                resetVideo()
+                gsap.set(modal, { pointerEvents: 'none' })
+            },
 		})
 	}
 

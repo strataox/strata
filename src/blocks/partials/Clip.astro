@@ -4,8 +4,6 @@
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
 	class?: string
-
-	video: string
 	clip?: string
 	duration?: string
 }
@@ -13,7 +11,6 @@ interface Props extends HTMLAttributes {
 const {
 	tag: Clip = 'div',
 	class: classes,
-	video,
 	clip,
 	duration = '3:22',
 	...attrs
@@ -30,7 +27,7 @@ const {
 	]}>
 	<video
 		class='size-full object-cover rounded-[inherit] align-middle'
-		src={video}
+		src={clip}
 		poster={clip}
 		autoplay
 		muted
