@@ -14,22 +14,20 @@ export function _modalVideo() {
 	let isOpen = false
 	let tl = null
 
-	const _getVideoId = () => {
+	const getVideoId = () => {
 		const id = modal.dataset.pblVideoId
 		return typeof id === 'string' && id.trim() ? id.trim() : null
 	}
 
-	const _getVideoTitle = () => {
+	const getVideoTitle = () => {
 		const t = modal.dataset.pblVideoTitle
 		return typeof t === 'string' && t.trim() ? t.trim() : 'Play video'
 	}
 
-	const _destroyIframe = () => {
-		content.replaceChildren()
-	}
+	const destroyIframe = () => content.replaceChildren()
 
-	const _mountIframe = () => {
-		const iframe = _createYouTubeIframe(_getVideoId(), _getVideoTitle())
+	const mountIframe = () => {
+		const iframe = _createYouTubeIframe(getVideoId(), getVideoTitle())
 		content.appendChild(iframe)
 	}
 
@@ -45,8 +43,8 @@ export function _modalVideo() {
 		gsap.killTweensOf(modal)
 		gsap.killTweensOf([top, bottom, content])
 
-		_destroyIframe()
-		_mountIframe()
+		destroyIframe()
+		mountIframe()
 
 		gsap.set(modal, { pointerEvents: 'auto' })
 		gsap.set([top, bottom], { yPercent: 0 })
@@ -99,7 +97,7 @@ export function _modalVideo() {
 			duration: 0.3,
 			ease: 'power2.in',
 			onComplete: () => {
-				_destroyIframe()
+				destroyIframe()
 				gsap.set(modal, { pointerEvents: 'none' })
 			},
 		})
