@@ -19,7 +19,6 @@ export function _modalVideo() {
 	let isOpen = false
 	let tl = null
 
-	// Defaults
 	const easeIn = 'power3.out'
 	const easeOut = 'power2.in'
 	const dur = 0.3
@@ -120,5 +119,11 @@ export function _modalVideo() {
 			close()
 		},
 		true,
-	)
+    )
+
+    document.addEventListener('fullscreenchange', () => {
+		if (!isOpen) return
+		if (document.fullscreenElement) return
+		dismiss.focus?.()
+	})
 }
