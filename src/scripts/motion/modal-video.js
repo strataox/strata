@@ -5,12 +5,16 @@ import { _ql, _q } from '@scripts/utils/snips'
 import { _createYouTubeIframe } from '@scripts/utils/create-youtube-iframe'
 
 export function _modalVideo() {
-	const modal = _q('[data-pbl-video]')
+    const modal = _q('[data-pbl-video]')
+    if (!modal) return
+
 	const top = _q('[data-pbl-video-shade-top]', modal)
 	const bottom = _q('[data-pbl-video-shade-bottom]', modal)
 	const content = _q('[data-pbl-video-content]', modal)
     const triggers = _ql('[data-pbl-playhead]')
     const dismiss = _q('[data-pbl-dismiss]', modal)
+
+    if (!top || !bottom || !content || !dismiss || !triggers.length) return
 
 	let isOpen = false
 	let tl = null
@@ -49,7 +53,8 @@ export function _modalVideo() {
 
 		gsap.set(modal, { pointerEvents: 'auto' })
 		gsap.set([top, bottom], { yPercent: 0 })
-		gsap.set(content, { autoAlpha: 0, scale: 0.92 })
+        gsap.set(content, { autoAlpha: 0, scale: 0.92 })
+        gsap.set(dismiss, { autoAlpha: 0, x: 16, scale: 0.92 })
 
 		tl = gsap
 			.timeline()
@@ -78,6 +83,17 @@ export function _modalVideo() {
 				},
 				'-=0.25',
 			)
+			.to(
+				dismiss,
+				{
+					autoAlpha: 1,
+					x: 0,
+					scale: 1,
+					duration: 0.25,
+					ease: 'power3.out',
+				},
+				'>-0.025',
+			)
 	}
 
 	const close = () => {
@@ -105,7 +121,10 @@ export function _modalVideo() {
 	}
 
     triggers.forEach((btn) => btn.addEventListener('click', open))
-    if (dismiss) dismiss.addEventListener('click', close)
+    dismiss.addEventListener('click', () => {
+		if (!isOpen) return
+		close()
+	})
 
 	document.addEventListener(
 		'keydown',
