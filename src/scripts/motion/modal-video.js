@@ -9,7 +9,8 @@ export function _modalVideo() {
 	const top = _q('[data-pbl-video-shade-top]', modal)
 	const bottom = _q('[data-pbl-video-shade-bottom]', modal)
 	const content = _q('[data-pbl-video-content]', modal)
-	const triggers = _ql('[data-pbl-playhead]')
+    const triggers = _ql('[data-pbl-playhead]')
+    const dismiss = _q('[data-pbl-dismiss]', modal)
 
 	let isOpen = false
 	let tl = null
@@ -103,7 +104,8 @@ export function _modalVideo() {
 		})
 	}
 
-	triggers.forEach((btn) => btn.addEventListener('click', open))
+    triggers.forEach((btn) => btn.addEventListener('click', open))
+    if (dismiss) dismiss.addEventListener('click', close)
 
 	document.addEventListener(
 		'keydown',
