@@ -1,6 +1,7 @@
 ---
 // @blocks/modals/VideoPlayer.astro
 
+import Avatar from '@atoms/Avatar.astro'
 import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
 
 interface Props extends HTMLAttributes {
@@ -50,8 +51,15 @@ const videoId = _getYouTubeId(video)
 			data-pbl-video-content
 			class:list={[
 				'relative z-10 size-full bg-black flex items-center justify-center',
-				'[&>iframe]:aspect-video [&>iframe]:max-w-7xl [&>iframe]:rounded-2xl',
+				'[&>iframe]:aspect-video [&>iframe]:max-w-7xl [&>iframe]:lg:rounded-2xl',
 			]}>
 		</div>
+
+		<button
+			data-pbl-dimiss
+			type='button'
+			class:list={['fixed top-4 right-4', 'z-50']}>
+			<Avatar icon='x-close' />
+		</button>
 	</div>
 </VideoPlayer>
