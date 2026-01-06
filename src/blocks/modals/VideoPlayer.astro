@@ -50,15 +50,15 @@ const videoId = _getYouTubeId(video)
 		<div
 			data-pbl-video-content
 			class:list={[
-				'relative z-10 w-screen h-full bg-black flex items-center justify-center',
-				'[&>iframe]:aspect-video [&>iframe]:max-w-7xl [&>iframe]:lg:rounded-2xl',
+				'relative z-10 size-full bg-black flex items-center justify-center',
+				'[&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:max-w-7xl [&>iframe]:lg:rounded-2xl',
 			]}>
 		</div>
 
-        <Avatar
-            data-pbl-dismiss
-            icon='x-close'
-            class:list={['fixed top-4 right-3', 'z-50']}
-        />
+		<Avatar
+			data-pbl-dismiss
+			icon='x-close'
+			class:list={['fixed top-4 right-3', 'z-50']}
+		/>
 	</div>
 </VideoPlayer>
