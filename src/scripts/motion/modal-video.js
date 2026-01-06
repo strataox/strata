@@ -56,8 +56,8 @@ export function _modalVideo() {
 
 		gsap.set(modal, { pointerEvents: 'auto' })
 		gsap.set([top, bottom], { yPercent: 0 })
-		gsap.set(content, { autoAlpha: 0, scale: 0.92 })
-		gsap.set(dismiss, { autoAlpha: 0, x: 16, scale: 0.92 })
+		gsap.set(content, { autoAlpha: 0, scale: 0 })
+		gsap.set(dismiss, { autoAlpha: 0, x: 16, scale: 0 })
 
 		tl = gsap
 			.timeline()
@@ -82,7 +82,7 @@ export function _modalVideo() {
 					autoAlpha: 1,
 					x: 0,
 					scale: 1,
-					duration: dur * 0.8,
+					duration: dur,
 					ease: easeIn,
 				},
 				'>-0.025',
