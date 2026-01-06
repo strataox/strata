@@ -45,8 +45,7 @@ export function _modalVideo() {
 			tl = null
 		}
 
-		gsap.killTweensOf(modal)
-		gsap.killTweensOf([top, bottom, content])
+		gsap.killTweensOf([modal, top, bottom, content])
 
 		destroyIframe()
 		mountIframe()
@@ -105,8 +104,7 @@ export function _modalVideo() {
 			tl = null
 		}
 
-		gsap.killTweensOf(modal)
-		gsap.killTweensOf([top, bottom, content])
+		gsap.killTweensOf([modal, top, bottom, content, dismiss])
 
 		gsap.to(modal, {
 			autoAlpha: 0,
