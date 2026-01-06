@@ -5,15 +5,19 @@ import Icon from '@atoms/Icon.astro'
 
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
+	type?: string
 	icon: string
 	size?: 'sm' | 'md' | 'lg'
+	scaleOnHover?: boolean
 	class?: string
 }
 
 const {
-	tag: Avatar = 'span',
+	tag: Avatar = 'button',
+	type = 'button',
 	icon,
 	size = 'md',
+	scaleOnHover = true,
 	class: classes,
 	...attrs
 } = Astro.props as Props
@@ -21,25 +25,29 @@ const {
 
 <Avatar
 	{...attrs}
-	class:list={[
-		'inline-flex items-center justify-center rounded-full',
-		'bg-(--elev-on-dark)',
-		'outline -outline-offset-1 outline-black/5 shadow-md',
-
-		size === 'sm' && 'size-10',
-		size === 'md' && 'size-12',
-		size === 'lg' && 'size-16',
-
-		classes,
-	]}>
-	<Icon
-		name={icon}
+    class:list={['group flex items-center justify-center rounded-full', classes]}>
+	<span
 		class:list={[
-			'text-(--neutral)',
+			'flex items-center justify-center rounded-full',
+			'bg-(--elev-on-dark)',
+			'outline -outline-offset-1 outline-black/5 shadow-md',
 
-			size === 'sm' && 'size-5',
-			size === 'md' && 'size-6',
-			size === 'lg' && 'size-7',
-		]}
-	/>
+			size === 'sm' && 'size-10',
+			size === 'md' && 'size-12',
+			size === 'lg' && 'size-16',
+
+			scaleOnHover &&
+				'group-hover:scale-110 transition-transform duration-200 ease-in-out',
+		]}>
+		<Icon
+			name={icon}
+			class:list={[
+				'text-(--neutral)',
+
+				size === 'sm' && 'size-5',
+				size === 'md' && 'size-6',
+				size === 'lg' && 'size-7',
+			]}
+		/>
+	</span>
 </Avatar>

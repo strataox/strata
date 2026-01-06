@@ -55,11 +55,10 @@ const videoId = _getYouTubeId(video)
 			]}>
 		</div>
 
-		<button
-			data-pbl-dimiss
-			type='button'
-			class:list={['fixed top-4 right-4', 'z-50']}>
-			<Avatar icon='x-close' />
-		</button>
+        <Avatar
+            data-pbl-dimiss
+            icon='x-close'
+            class:list={['fixed top-4 right-4', 'z-50']}
+        />
 	</div>
 </VideoPlayer>
