@@ -121,10 +121,7 @@ export function _modalVideo() {
 	}
 
     triggers.forEach((btn) => btn.addEventListener('click', open))
-    dismiss.addEventListener('click', () => {
-		if (!isOpen) return
-		close()
-	})
+    dismiss.addEventListener('click', close)
 
 	document.addEventListener(
 		'keydown',
