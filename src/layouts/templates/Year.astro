@@ -11,6 +11,8 @@ import Crosshairs from '@blocks/Crosshairs.astro'
 import Playhead from '@blocks/Playhead.astro'
 import CarouselMini from '@blocks/CarouselMini.astro'
 import VideoPlayer from '@blocks/modals/VideoPlayer.astro'
+import ReelReveal from '@blocks/modals/ReelReveal.astro'
+import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
 
 type VideoData = {
 	title: string
@@ -94,7 +96,10 @@ const v = data.video
 		/>
 
 		<Playhead
-			data-pbl-playhead
+			data-pbl-reel-trigger
+			data-pbl-reel-kind='video'
+			data-pbl-video-id={_getYouTubeId(v?.video)}
+			data-pbl-video-title={v?.title}
 			class:list={[
 				'col-span-full row-start-5',
 				'-mt-[calc(var(--space)*4)]',
@@ -132,12 +137,12 @@ const v = data.video
 			class:list={[
 				'col-span-full row-start-7 lg:row-start-5',
 				'lg:col-start-1 lg:col-end-6 xl:col-end-5',
-				'p-(--space) mt-[calc(var(--space)*2)] lg:mt-[calc(var(--space)*3.5)]',
+				'p-(--space) pb-[calc(var(--space)*2)] mt-[calc(var(--space)*2)] lg:mt-[calc(var(--space)*3.5)]',
 				'lg:translate-x-(--space)',
 				'z-30',
 			]}
 		/>
 	</div>
 
-	<VideoPlayer video={v?.video} title={v?.title} />
+	<ReelReveal />
 </div>

@@ -17,7 +17,6 @@ export function _createYouTubeIframe(videoId, title = 'Play video') {
 	iframe.title =
 		typeof title === 'string' && title.trim() ? title.trim() : 'Play video'
 	iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'
-	iframe.allowFullscreen = true
 	iframe.setAttribute('frameborder', '0')
 
 	return iframe

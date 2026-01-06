@@ -1,7 +1,7 @@
 // @scripts/global.js
 
 import { _loopingQuotes } from '@scripts/motion/looping-quotes'
-import { _modalVideo } from '@scripts/motion/modal-video'
+import { _reelReveal } from '@scripts/motion/real-reveal'
 
 document.addEventListener('DOMContentLoaded', () => {
     once()
@@ -10,6 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function init() {
     _loopingQuotes()
-    _modalVideo()
+    _reelReveal()
 }
 function once() {}

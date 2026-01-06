@@ -1,31 +1,22 @@
 ---
-// @blocks/modals/VideoPlayer.astro
+// @blocks/modals/ReelReveal.astro
 
 import Avatar from '@atoms/Avatar.astro'
-import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
 
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
 	class?: string
-	video?: string
-	title?: string
 }
 
 const {
-	tag: VideoPlayer = 'div',
+	tag: ReelReveal = 'div',
 	class: classes,
-	video,
-	title = 'Play video',
 	...attrs
 } = Astro.props as Props
-
-const videoId = _getYouTubeId(video)
 ---
 
-<VideoPlayer
-	data-pbl-video
-	data-pbl-video-id={videoId}
-	data-pbl-video-title={title}
+<ReelReveal
+	data-pbl-reel
 	{...attrs}
 	class:list={[
 		'fixed inset-0 z-50',
@@ -34,32 +25,33 @@ const videoId = _getYouTubeId(video)
 		'scale-50',
 		classes,
 	]}>
-	<div data-pbl-video-stage class='relative size-full overflow-clip bg-black'>
+	<div data-pbl-reel-stage class='relative size-full overflow-clip bg-black'>
 		<div
-			data-pbl-video-shade-top
+			data-pbl-reel-shade-top
 			aria-hidden='true'
 			class='absolute inset-x-0 top-0 h-1/2 bg-black origin-bottom'>
 		</div>
 
 		<div
-			data-pbl-video-shade-bottom
+			data-pbl-reel-shade-bottom
 			aria-hidden='true'
 			class='absolute inset-x-0 bottom-0 h-1/2 bg-black origin-top'>
 		</div>
 
 		<div
-			data-pbl-video-content
+			data-pbl-reel-content
 			class:list={[
 				'relative z-10 size-full bg-black flex items-center justify-center',
 				'[&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:max-w-7xl [&>iframe]:lg:rounded-2xl',
 			]}>
+			<slot />
 		</div>
 
 		<Avatar
 			data-pbl-dismiss
-			aria-label='Close video'
+			aria-label='Close'
 			icon='x-close'
 			class:list={['fixed top-2.5 right-1.5 lg:right-3 lg:top-3', 'z-50']}
 		/>
 	</div>
-</VideoPlayer>
+</ReelReveal>
