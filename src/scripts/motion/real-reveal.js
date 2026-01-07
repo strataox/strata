@@ -25,9 +25,13 @@ export function _reelReveal() {
 	const easeOut = 'power2.in'
 	const dur = 0.3
 
-	const getKind = () => {
-		const k = activeTrigger?.dataset?.pblReelKind
-		return typeof k === 'string' && k.trim() ? k.trim() : null
+	const focusNoScroll = (el) => {
+		if (!el?.focus) return
+		try {
+			el.focus({ preventScroll: true })
+		} catch {
+			el.focus()
+		}
 	}
 
 	const getVideoId = () => {
@@ -46,7 +50,8 @@ export function _reelReveal() {
 		const id = getVideoId()
 		if (!id) return
 		destroyIframe()
-		content.appendChild(_createYouTubeIframe(id, getVideoTitle()))
+		const iframe = _createYouTubeIframe(id, getVideoTitle())
+		if (iframe) content.appendChild(iframe)
 	}
 
 	const kill = () => {
@@ -63,9 +68,7 @@ export function _reelReveal() {
 		activeTrigger = trigger
 
 		kill()
-
-		const kind = getKind()
-		if (kind === 'video') mountVideo()
+		mountVideo()
 
 		gsap.set(modal, { pointerEvents: 'auto' })
 		gsap.set([top, bottom], { yPercent: 0 })
@@ -94,13 +97,16 @@ export function _reelReveal() {
 				{ autoAlpha: 1, x: 0, scale: 1, duration: dur, ease: easeIn },
 				'>-0.025',
 			)
+			.add(() => {
+				focusNoScroll(dismiss)
+			})
 	}
 
 	const close = () => {
 		if (!isOpen) return
 		isOpen = false
 
-		const kind = getKind()
+		const triggerToRestore = activeTrigger
 
 		kill()
 
@@ -110,19 +116,23 @@ export function _reelReveal() {
 			duration: dur,
 			ease: easeOut,
 			onComplete: () => {
-				if (kind === 'video') destroyIframe()
+				destroyIframe()
 				gsap.set(modal, { pointerEvents: 'none' })
-				activeTrigger?.focus?.()
 				activeTrigger = null
+
+				requestAnimationFrame(() => {
+					focusNoScroll(triggerToRestore)
+				})
 			},
 		})
 	}
 
-	triggers.forEach((btn) => {
-		btn.addEventListener('click', () => open(btn))
-	})
+	triggers.forEach((btn) => btn.addEventListener('click', () => open(btn)))
 
-	dismiss.addEventListener('click', close)
+	dismiss.addEventListener('click', (e) => {
+		e.preventDefault()
+		close()
+	})
 
 	const onEsc = (e) => {
 		if (e.key !== 'Escape') return
@@ -137,11 +147,10 @@ export function _reelReveal() {
 	document.addEventListener('fullscreenchange', () => {
 		isFullscreen = Boolean(document.fullscreenElement)
 		if (isFullscreen) return
-
 		if (!isOpen) return
 
 		requestAnimationFrame(() => {
-			dismiss.focus?.()
+			focusNoScroll(dismiss)
 		})
 	})
 }
