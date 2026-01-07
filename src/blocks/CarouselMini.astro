@@ -11,21 +11,31 @@ interface Props extends HTMLAttributes {
 const {
 	tag: CarouselMini = 'div',
 	year,
-	limit = 7,
+	limit = 30,
 	class: classes,
 	...attrs
 } = Astro.props as Props
 
 const gallery = await _getGallery(year, limit)
 const demo = gallery.slice(0, 3)
+
 const IMG_WIDTH = 760
 const imgSrc = (url: string) =>
 	import.meta.env.DEV
 		? url
 		: `/.netlify/images?url=${encodeURIComponent(url)}&w=${IMG_WIDTH}&q=80&auto=format`
+
+const payload = gallery.map((g) => ({
+	src: imgSrc(g.image),
+	alt: g.altText ?? g.title ?? '',
+}))
 ---
 
-<CarouselMini {...attrs} class:list={[classes]}>
+<CarouselMini
+	{...attrs}
+	data-pbl-cmini
+	data-pbl-cmini-images={JSON.stringify(payload)}
+	class:list={[classes]}>
 	<ul class='grid grid-cols-7 items-end gap-1 select-none'>
 		{
 			demo.map((item, idx) => (
@@ -38,13 +48,38 @@ const imgSrc = (url: string) =>
 						idx === 0 && '-rotate-12 origin-bottom-left',
 						idx === 2 && 'rotate-12 origin-bottom-right',
 					]}>
-					<img
-						src={imgSrc(item.image)}
-						alt={item.altText ?? item.title}
-						loading='lazy'
-						decoding='async'
-						class='size-full object-cover object-center'
-					/>
+					{idx === 1 ? (
+						<img
+							data-pbl-cmini-img
+							data-pbl-cmini-slot='active'
+							src={imgSrc(item.image)}
+							alt={item.altText ?? item.title}
+							loading='lazy'
+							decoding='async'
+							class='size-full object-cover object-center'
+						/>
+					) : (
+						<button
+							type='button'
+							data-pbl-cmini-btn
+							data-pbl-cmini-slot={idx === 0 ? 'left' : 'right'}
+							aria-label={
+								idx === 0 ? 'Previous photo' : 'Next photo'
+							}
+							class='block size-full bg-transparent p-0 border-0 cursor-pointer'>
+							<img
+								data-pbl-cmini-img
+								data-pbl-cmini-slot={
+									idx === 0 ? 'left' : 'right'
+								}
+								src={imgSrc(item.image)}
+								alt={item.altText ?? item.title}
+								loading='lazy'
+								decoding='async'
+								class='size-full object-cover object-center'
+							/>
+						</button>
+					)}
 				</li>
 			))
 		}
