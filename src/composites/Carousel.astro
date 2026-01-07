@@ -11,23 +11,53 @@ interface Props extends HTMLAttributes {
 const {
 	tag: Carousel = 'section',
 	year,
-	limit = 7,
+	limit = 50,
 	class: classes,
 	...attrs
 } = Astro.props as Props
 
 const gallery = await _getGallery(year, limit)
+
+const IMG_WIDTH = 1600
 const imgSrc = (url: string) =>
 	import.meta.env.DEV
 		? url
 		: `/.netlify/images?url=${encodeURIComponent(url)}&w=${IMG_WIDTH}&q=80&auto=format`
 ---
 
-<Carousel {...attrs} class:list={['pt-(--space) lg:pt-0', classes]}>
-	<div class:list={['bg-black py-[calc(var(--space)*2)]']}>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
-		voluptatibus, sit cupiditate eveniet earum, aut voluptatem facilis
-		recusandae explicabo ipsa et minima molestias quisquam maiores
-		laboriosam aliquid repudiandae nobis quam!
+<Carousel {...attrs} class:list={['relative w-full', classes]}>
+	<div
+		data-pbl-carousel
+		class:list={[
+			'relative w-full overflow-hidden',
+			'bg-black',
+			'py-[calc(var(--space)*2)]',
+		]}>
+		<ul
+			data-pbl-carousel-track
+			class:list={[
+				'flex items-center gap-[calc(var(--space)/2)]',
+				'overflow-x-auto scroll-smooth',
+				'snap-x snap-mandatory select-none touch-pan-y',
+				'[scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]',
+			]}>
+			{
+				gallery.map((item) => (
+					<li
+						data-pbl-carousel-slide
+						class:list={[
+							'snap-center shrink-0 transform-[translateZ(0)]',
+						]}>
+						<div class:list={['h-[clamp(14rem,80vh,45rem)]']}>
+							<img
+								src={imgSrc(item.image)}
+								alt={item.altText ?? item.title}
+								class='size-full object-cover'
+							/>
+						</div>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </Carousel>

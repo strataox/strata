@@ -2,7 +2,7 @@
 
 import { _loopingQuotes } from '@scripts/motion/looping-quotes'
 import { _reelReveal } from '@scripts/motion/real-reveal'
-import { _carouselMini } from '@scripts/motion/carousel-mini'
+import { _carousel } from '@scripts/motion/carousel'
 
 document.addEventListener('DOMContentLoaded', () => {
     once()
@@ -12,6 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function init() {
     _loopingQuotes()
     _reelReveal()
-    _carouselMini()
+    _carousel()
 }
 function once() {}

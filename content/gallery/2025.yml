@@ -79,4 +79,36 @@ items:
     altText: "Table after the dinner concluded"
     description: ""
     priority: 100
-    draft: false 
+    draft: false
+
+  - id: "fullhouse-011"
+    title: "The Table After"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-011.jpg"
+    altText: "Table after the dinner concluded"
+    description: ""
+    priority: 100
+    draft: false
+
+  - id: "fullhouse-012"
+    title: "The Table After"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-012.jpg"
+    altText: "Table after the dinner concluded"
+    description: ""
+    priority: 100
+    draft: false
+
+  - id: "fullhouse-013"
+    title: "The Table After"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-013.jpg"
+    altText: "Table after the dinner concluded"
+    description: ""
+    priority: 100
+    draft: false
+
+  - id: "fullhouse-014"
+    title: "The Table After"
+    image: "/gallery/2025/stratasphere-fullhouse-2025-014.jpg"
+    altText: "Table after the dinner concluded"
+    description: ""
+    priority: 100
+    draft: false
