@@ -31,12 +31,12 @@ const imgSrc = (url: string) =>
 		class:list={[
 			'relative w-full overflow-hidden',
 			'bg-black',
-			'py-[calc(var(--space)*3)]',
+			'py-[calc(var(--space)*4)]',
 		]}>
 		<ul
 			data-pbl-carousel-track
 			class:list={[
-				'flex items-center gap-[calc(var(--space)/2)]',
+				'inline-flex gap-[calc(var(--space)/2)]',
 				'overflow-x-auto scroll-smooth',
 				'snap-x snap-mandatory select-none touch-pan-y',
 				'[scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]',
@@ -48,13 +48,15 @@ const imgSrc = (url: string) =>
 						class:list={[
 							'snap-center shrink-0 transform-[translateZ(0)]',
 						]}>
-						<div class:list={['h-[clamp(14rem,80vh,45rem)]']}>
-							<img
-								src={imgSrc(item.image)}
-								alt={item.altText ?? item.title}
-								class='size-full object-cover'
-							/>
-						</div>
+						<img
+							src={imgSrc(item.image)}
+							alt={item.altText ?? item.title}
+							class:list={[
+                                'block',
+								'w-full object-contain',
+								'h-auto min-h-98 max-h-[80vh]',
+							]}
+						/>
 					</li>
 				))
 			}
