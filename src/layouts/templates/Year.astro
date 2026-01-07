@@ -9,7 +9,7 @@ import Clip from '@blocks/partials/Clip.astro'
 import { _getQuotes } from '@scripts/data/get-quotes'
 import Crosshairs from '@blocks/Crosshairs.astro'
 import Playhead from '@blocks/controls/Playhead.astro'
-import CarouselMini from '@blocks/CarouselMini.astro'
+import Carousel from '@composites/Carousel.astro'
 import ReelReveal from '@blocks/modals/ReelReveal.astro'
 import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
 
@@ -77,7 +77,7 @@ const v = data.video
 		<p
 			class:list={[
 				'col-span-full row-start-4 lg:col-start-8 lg:col-end-11 lg:justify-self-end',
-				'p-(--space) lg:px-0 lg:p-0',
+				'p-(--space) lg:px-0 lg:pb-0',
 				'text-(--text-body-dark-fixed) text-xl xl:text-2xl leading-snug max-w-[45ch] lg:max-w-none',
 				'z-30',
 			]}>
@@ -125,18 +125,16 @@ const v = data.video
 			duration={10000}
 			class:list={[
 				'col-span-full row-start-6 lg:row-start-5 lg:col-start-1 lg:col-end-4',
-				'p-(--space)',
+				'p-(--space) h-full place-content-center lg:-mt-[calc(var(--space)*1.5)]',
 				'z-30',
 			]}
 		/>
 
-		<CarouselMini
+		<Carousel
 			year='2025'
 			class:list={[
-				'col-span-full row-start-7 lg:row-start-5',
-				'lg:col-start-1 lg:col-end-6 xl:col-end-5',
-				'p-(--space) pb-[calc(var(--space)*2)] mt-[calc(var(--space)*2)] lg:mt-[calc(var(--space)*3.5)]',
-				'lg:translate-x-(--space)',
+				'col-span-full row-start-7',
+				'p-(--space)',
 				'z-30',
 			]}
 		/>

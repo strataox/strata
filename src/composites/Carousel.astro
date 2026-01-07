@@ -1,0 +1,28 @@
+---
+// @composites/Carousel.astro
+import { _getGallery } from '@scripts/data/get-gallery'
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+	year: string
+	limit?: number
+}
+
+const {
+	tag: Carousel = 'section',
+	year,
+	limit = 7,
+	class: classes,
+	...attrs
+} = Astro.props as Props
+
+const gallery = await _getGallery(year, limit)
+const imgSrc = (url: string) =>
+	import.meta.env.DEV
+		? url
+		: `/.netlify/images?url=${encodeURIComponent(url)}&w=${IMG_WIDTH}&q=80&auto=format`
+---
+
+<Carousel {...attrs} class:list={['bg-black', classes]}>
+	Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptatibus, sit cupiditate eveniet earum, aut voluptatem facilis recusandae explicabo ipsa et minima molestias quisquam maiores laboriosam aliquid repudiandae nobis quam!
+</Carousel>
