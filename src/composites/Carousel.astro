@@ -36,7 +36,7 @@ const imgSrc = (url: string) =>
 		<ul
 			data-pbl-carousel-track
 			class:list={[
-				'inline-flex items-center gap-[calc(var(--space)/2)]',
+				'inline-flex items-center',
 				'overflow-x-auto scroll-smooth',
 				'snap-x snap-mandatory select-none touch-pan-y',
 				'[scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]',
@@ -47,13 +47,14 @@ const imgSrc = (url: string) =>
 						data-pbl-carousel-slide
 						class:list={[
 							'snap-center shrink-0 transform-[translateZ(0)]',
+							'pr-(--space) first:pl-(--space)',
 						]}>
 						<img
 							src={imgSrc(item.image)}
 							alt={item.altText ?? item.title}
 							class:list={[
 								'block',
-								'w-[80vw] lg:w-full object-contain',
+								'w-full object-contain',
 								'h-auto max-h-96 md:max-h-128 lg:max-h-160',
 							]}
 						/>
