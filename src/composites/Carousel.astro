@@ -25,14 +25,16 @@ const imgSrc = (url: string) =>
 		: `/.netlify/images?url=${encodeURIComponent(url)}&w=${IMG_WIDTH}&q=80&auto=format`
 ---
 
-<Carousel {...attrs} class:list={['relative w-full', classes]}>
-	<div
-		data-pbl-carousel
-		class:list={[
-			'relative w-full overflow-hidden',
-			'bg-black',
-			'py-[calc(var(--space)*4)]',
-		]}>
+<Carousel
+	data-pbl-carousel
+	{...attrs}
+	class:list={[
+		'relative w-full',
+		'bg-black',
+		'py-[calc(var(--space)*4)]',
+		classes,
+	]}>
+	<div data-pbl-carousel-inner>
 		<ul
 			data-pbl-carousel-track
 			class:list={[
@@ -47,7 +49,6 @@ const imgSrc = (url: string) =>
 						data-pbl-carousel-slide
 						class:list={[
 							'snap-center shrink-0 transform-[translateZ(0)]',
-							'last:pr-(--space) first:pl-(--space)',
 						]}>
 						<img
 							src={imgSrc(item.image)}

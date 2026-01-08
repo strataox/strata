@@ -1,13 +1,68 @@
 // @scripts/motion/carousel.js
 import gsap from 'gsap'
-import Draggable from 'gsap/Draggable'
-import { _q, _ql } from '@scripts/utils/snips'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import { _q } from '@scripts/utils/snips'
 
-gsap.registerPlugin(Draggable)
+gsap.registerPlugin(ScrollTrigger)
 
 export function _carousel() {
 	const root = _q('[data-pbl-carousel]')
 	if (!root) return
 
+	const inner = _q('[data-pbl-carousel-inner]', root)
+	if (!inner) return
 
+	const reduce =
+		globalThis.matchMedia &&
+		globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches
+	if (reduce) return
+
+	// root is ONLY clipped
+	gsap.set(root, {
+		transformOrigin: '50% 50%',
+		willChange: 'clip-path',
+	})
+
+	// inner is ONLY transformed
+	gsap.set(inner, {
+		transformOrigin: '50% 50%',
+		willChange: 'transform, opacity, filter',
+	})
+
+	const tl = gsap.timeline({
+		scrollTrigger: {
+			trigger: root,
+			start: 'top 95%',
+			end: 'top 15%',
+			scrub: true,
+		},
+	})
+
+	tl.fromTo(
+		root,
+		{
+			clipPath: 'circle(0vmax at 50% 50%)',
+		},
+		{
+			clipPath: 'circle(150vmax at 50% 50%)',
+			ease: 'none',
+		},
+		0,
+	)
+
+	tl.fromTo(
+		inner,
+		{
+			y: 80,
+			scale: 0.96,
+			opacity: 0,
+		},
+		{
+			y: 0,
+			scale: 1,
+			opacity: 1,
+			ease: 'none',
+		},
+		0,
+	)
 }
