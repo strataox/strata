@@ -1,4 +1,5 @@
 // @scripts/motion/carousel.js
+
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { _q } from '@scripts/utils/snips'
@@ -17,13 +18,11 @@ export function _carousel() {
 		globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches
 	if (reduce) return
 
-	// root is ONLY clipped
 	gsap.set(root, {
 		transformOrigin: '50% 50%',
 		willChange: 'clip-path',
 	})
 
-	// inner is ONLY transformed
 	gsap.set(inner, {
 		transformOrigin: '50% 50%',
 		willChange: 'transform, opacity, filter',
@@ -40,11 +39,9 @@ export function _carousel() {
 
 	tl.fromTo(
 		root,
+		{ clipPath: 'circle(0vmax at 50% 50%)', },
 		{
-			clipPath: 'circle(0vmax at 50% 50%)',
-		},
-		{
-			clipPath: 'circle(150vmax at 50% 50%)',
+			clipPath: 'circle(100vmax at 50% 50%)',
 			ease: 'none',
 		},
 		0,
@@ -52,17 +49,8 @@ export function _carousel() {
 
 	tl.fromTo(
 		inner,
-		{
-			y: 80,
-			scale: 0.96,
-			opacity: 0,
-		},
-		{
-			y: 0,
-			scale: 1,
-			opacity: 1,
-			ease: 'none',
-		},
+		{ y: 56, scale: 0.8, opacity: 0 },
+		{ y: 0, scale: 1, opacity: 1, ease: 'none' },
 		0,
 	)
 }
