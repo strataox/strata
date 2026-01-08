@@ -31,7 +31,7 @@ export function _carousel() {
 		scrollTrigger: {
 			trigger: root,
 			start: 'top 95%',
-			end: 'top 15%',
+			end: 'top 35%',
 			scrub: true,
 		},
 	})
@@ -39,7 +39,7 @@ export function _carousel() {
 	tl.fromTo(
 		root,
 		{
-			clipPath: 'inset(18% 10% 18% 10% round 400px)',
+			clipPath: 'inset(18% 10% 18% 10% round 500px)',
 		},
 		{
 			clipPath: 'inset(0% 0% 0% 0% round 0px)',
