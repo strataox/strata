@@ -47,8 +47,7 @@ const pullsB = pullsAll.slice(splitAt)
 const v = data.video
 ---
 
-<div
-	class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
+<div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
 	<Backdrop />
 
 	<div
@@ -126,7 +125,8 @@ const v = data.video
 			duration={10000}
 			class:list={[
 				'col-span-full row-start-6 lg:row-start-5 lg:col-start-1 lg:col-end-5',
-				'p-(--space) h-full place-content-center lg:-mt-[calc(var(--space)*1.5)]',
+				'h-full place-content-center',
+				'p-(--space) pb-[calc(var(--space)*2)] lg:-mt-[calc(var(--space)*1.5)] lg:pb-0',
 				'z-30',
 			]}
 		/>
@@ -135,6 +135,7 @@ const v = data.video
 			year='2025'
 			class:list={[
 				'col-span-full row-start-7',
+				'lg:-mt-[calc(var(--space)*3)]',
 				'z-50',
 			]}
 		/>

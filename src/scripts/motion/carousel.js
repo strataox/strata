@@ -1,5 +1,4 @@
 // @scripts/motion/carousel.js
-
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { _q } from '@scripts/utils/snips'
@@ -39,9 +38,11 @@ export function _carousel() {
 
 	tl.fromTo(
 		root,
-		{ clipPath: 'circle(0vmax at 50% 50%)', },
 		{
-			clipPath: 'circle(100vmax at 50% 50%)',
+			clipPath: 'inset(18% 10% 18% 10% round 400px)',
+		},
+		{
+			clipPath: 'inset(0% 0% 0% 0% round 0px)',
 			ease: 'none',
 		},
 		0,
@@ -49,8 +50,17 @@ export function _carousel() {
 
 	tl.fromTo(
 		inner,
-		{ y: 56, scale: 0.8, opacity: 0 },
-		{ y: 0, scale: 1, opacity: 1, ease: 'none' },
+		{
+			y: 56,
+			scale: 0.92,
+			opacity: 0,
+		},
+		{
+			y: 0,
+			scale: 1,
+			opacity: 1,
+			ease: 'none',
+		},
 		0,
 	)
 }
