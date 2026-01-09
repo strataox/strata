@@ -39,7 +39,7 @@ export function _carousel() {
 	tl.fromTo(
 		root,
 		{
-			clipPath: 'inset(18% 10% 18% 10% round 500px)',
+			clipPath: 'inset(20% 15% 20% 15% round 500px)',
 		},
 		{
 			clipPath: 'inset(0% 0% 0% 0% round 0px)',
@@ -52,7 +52,7 @@ export function _carousel() {
 		inner,
 		{
 			y: 56,
-			scale: 0.92,
+			scale: 0.5,
 			opacity: 0,
 		},
 		{
