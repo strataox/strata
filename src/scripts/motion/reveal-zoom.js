@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 export const _revealZoom = () => {
     const root = _q('[data-pbl-reveal-zoom]')
     if (!root) return
-    
+
     const inner = root.firstElementChild
     if (!inner) return
 
@@ -40,15 +40,8 @@ export const _revealZoom = () => {
 
 	reveal.fromTo(
 		inner,
-		{
-			scale: 2,
-			opacity: 0,
-		},
-		{
-			scale: 1,
-			opacity: 1,
-			ease: 'none',
-		},
+		{ scale: 2, opacity: 0 },
+		{ scale: 1, opacity: 1, ease: 'none' },
 		0,
 	)
 }
