@@ -31,7 +31,7 @@ export function _loopingQuotes() {
 
 		if (pulser) {
 			gsap.to(pulser, {
-				scale: 1.5,
+				scale: 1.35,
 				duration: 0.75,
 				repeat: -1,
 				yoyo: true,
