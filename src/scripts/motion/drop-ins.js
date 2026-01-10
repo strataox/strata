@@ -31,7 +31,7 @@ export function _dropIns() {
 			ease: 'power2.out',
 			scrollTrigger: {
 				trigger: el,
-				start: 'top 85%',
+				start: 'top 90%',
 				toggleActions: 'play none none reverse',
 			},
 		})
