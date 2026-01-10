@@ -104,11 +104,3 @@ items:
     description: ""
     priority: 100
     draft: false
-
-  - id: "fullhouse-014"
-    title: "The Table After"
-    image: "/gallery/2025/stratasphere-fullhouse-2025-014.jpg"
-    altText: "Table after the dinner concluded"
-    description: ""
-    priority: 100
-    draft: false
