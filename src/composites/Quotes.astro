@@ -14,11 +14,13 @@ interface QuoteItem {
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
 	quotes?: QuoteItem[]
+	masonry?: boolean
 }
 
 const {
 	tag: Quotes = 'section',
 	quotes = [],
+	masonry = true,
 	class: classes,
 	...attrs
 } = Astro.props as Props
@@ -26,24 +28,40 @@ const {
 const list = quotes.filter((q) => q.full)
 ---
 
-<Quotes data-pbl-quotes {...attrs} class:list={['w-full', classes]}>
+<Quotes
+	data-pbl-quotes
+	{...attrs}
+	class:list={[
+		'w-full',
+		masonry && [
+			'columns-1 md:columns-2 lg:columns-3',
+			'space-y-[calc(var(--space)*1.5)]',
+			'*:break-inside-avoid',
+		],
+		classes,
+	]}>
 	{
 		list.map(({ full, author }) => (
-			<blockquote class='rotate-[-5deg] origin-top-left'>
-				<p
-					class:list={[
-						'text-[1.35rem] leading-tight font-script',
-						'text-(--primary-fixed)',
-						'max-w-[50ch]',
-					]}>
-					{full}
-				</p>
+			<blockquote
+				class:list={[
+					'font-script md:max-w-[55ch]',
+					'text-[1.35rem] leading-tight',
+					'text-(--primary-fixed)',
+					'flex flex-col gap-y-2',
+				]}>
+				<p set:text={full} />
 
 				<cite
-					class:list={['not-italic block pt-2', 'text-sm font-sans']}>
-					<span class='font-medium'>{author.name}</span>
-					<span class='mx-2 opacity-60'>—</span>
-					<span>{author.byline}</span>
+					class:list={[
+						'not-italic',
+						'flex flex-col -space-y-1.5',
+						'text-(--primary-fixed)/80',
+					]}>
+					<span set:text={author.name} />
+					<span class='flex gap-x-2'>
+						<span set:text={'~'} />
+						<span set:text={author.byline} />
+					</span>
 				</cite>
 			</blockquote>
 		))
