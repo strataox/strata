@@ -1,5 +1,5 @@
 ---
-// @blocks/partials/Quote.astro
+// @blocks/partials/QuoteLooping.astro
 
 import Icon from '@atoms/Icon.astro'
 
@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes {
 }
 
 const {
-	tag: Quote = 'aside',
+	tag: QuoteLooping = 'aside',
 	pulls = [],
 	duration = 1000,
 	class: classes,
@@ -21,29 +21,25 @@ const {
 const first = pulls?.[0] ?? ''
 ---
 
-<Quote
-	data-pbl-quote
-	data-pbl-quote-pulls={JSON.stringify(pulls)}
-	data-pbl-quote-duration={String(duration)}
+<QuoteLooping
+	data-pbl-quote-looping
+	data-pbl-quote-looping-pulls={JSON.stringify(pulls)}
+	data-pbl-quote-looping-duration={String(duration)}
 	{...attrs}
-	class:list={[
-		'pbl-quote',
-		'rotate-[-5deg] origin-top-left md:-translate-y-4',
-		classes,
-	]}>
+	class:list={['rotate-[-5deg] origin-top-left md:-translate-y-4', classes]}>
 	<blockquote
-		data-pbl-quote-text
+		data-pbl-quote-looping-text
 		class:list={[
-			'text-xl leading-tight font-script text-(--primary-fixed) max-w-[50ch] mx-auto',
+			'text-[1.35rem] leading-tight font-script text-(--primary-fixed) max-w-[50ch] mx-auto',
 			'line-clamp-3 h-20 overflow-clip',
 		]}>
 		{first}
 	</blockquote>
 	<div class='flex justify-center pt-1 -ml-4.5'>
 		<Icon
-			data-pbl-quote-pulser
+			data-pbl-quote-looping-pulser
 			name='pulser'
 			class='size-2 text-(--primary-fixed)'
 		/>
 	</div>
-</Quote>
+</QuoteLooping>

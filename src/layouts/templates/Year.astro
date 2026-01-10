@@ -4,7 +4,7 @@
 import Icon from '@atoms/Icon.astro'
 import Backdrop from '@atoms/Backdrop.astro'
 import Masthead from '@blocks/Masthead.astro'
-import Quote from '@blocks/partials/Quote.astro'
+import QuoteLooping from '@blocks/partials/QuoteLooping.astro'
 import Clip from '@blocks/partials/Clip.astro'
 import { _getQuotes } from '@scripts/data/get-quotes'
 import Crosshairs from '@blocks/Crosshairs.astro'
@@ -37,6 +37,12 @@ interface Props {
 const { data } = Astro.props as Props
 
 const quoteEntries = await _getQuotes('2025')
+const quotesAll = (quoteEntries ?? [])
+	.map((q) => ({
+		full: q?.data?.quote?.full,
+		author: q.data.author,
+	}))
+	.filter((q) => q.full)
 const pullsAll = (quoteEntries ?? [])
 	.map((q) => q?.data?.quote?.pull)
 	.filter(Boolean)
@@ -46,6 +52,7 @@ const pullsA = pullsAll.slice(0, splitAt)
 const pullsB = pullsAll.slice(splitAt)
 
 const v = data.video
+console.log(quotesAll)
 ---
 
 <div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
@@ -57,7 +64,7 @@ const v = data.video
 			<Icon name='logo' class='w-[clamp(6rem,7vw,7.5rem)]' />
 		</header>
 
-		<Quote
+		<QuoteLooping
 			pulls={pullsA}
 			duration={12000}
 			class:list={[
@@ -121,7 +128,7 @@ const v = data.video
 			aria-label={v.title}
 		/>
 
-		<Quote
+		<QuoteLooping
 			pulls={pullsB}
 			duration={10000}
 			class:list={[
@@ -142,8 +149,10 @@ const v = data.video
 		/>
 
 		<Quotes
+			quotes={quotesAll}
 			class:list={[
 				'col-span-full row-start-8',
+				'px-(--space) py-[calc(var(--space)*3)]',
 				'z-30',
 			]}
 		/>

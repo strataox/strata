@@ -4,24 +4,24 @@ import gsap from 'gsap'
 import { _ql, _q } from '@scripts/utils/snips'
 
 export function _loopingQuotes() {
-	const quotes = _ql('[data-pbl-quote]')
+	const quotes = _ql('[data-pbl-quote-looping]')
 	if (!quotes.length) return
 
 	quotes.forEach((root, i) => {
-		const text = _q('[data-pbl-quote-text]', root)
-		const pulser = _q('[data-pbl-quote-pulser]', root)
+		const text = _q('[data-pbl-quote-looping-text]', root)
+		const pulser = _q('[data-pbl-quote-looping-pulser]', root)
 		if (!text) return
 
 		let pulls = []
 		try {
-			pulls = JSON.parse(root.dataset.pblQuotePulls || '[]')
+			pulls = JSON.parse(root.dataset.pblQuoteLoopingPulls || '[]')
 		} catch {
 			pulls = []
 		}
 
 		if (!Array.isArray(pulls) || pulls.length <= 1) return
 
-		const durationMs = Number(root.dataset.pblQuoteDuration || 10000)
+		const durationMs = Number(root.dataset.pblQuoteLoopingDuration || 10000)
 		const step =
 			Number.isFinite(durationMs) && durationMs > 0
 				? durationMs / 1000
@@ -31,7 +31,7 @@ export function _loopingQuotes() {
 
 		if (pulser) {
 			gsap.to(pulser, {
-				scale: 1.25,
+				scale: 1.5,
 				duration: 0.75,
 				repeat: -1,
 				yoyo: true,

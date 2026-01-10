@@ -1,338 +1,51 @@
 ---
 // @composites/Quotes.astro
 
+interface QuoteAuthor {
+	name: string
+	byline: string
+}
+
+interface QuoteItem {
+	full?: string
+	author: QuoteAuthor
+}
+
 interface Props extends HTMLAttributes {
 	tag?: keyof HTMLElementTagNameMap
+	quotes?: QuoteItem[]
 }
 
 const {
 	tag: Quotes = 'section',
+	quotes = [],
 	class: classes,
 	...attrs
 } = Astro.props as Props
+
+const list = quotes.filter((q) => q.full)
 ---
 
-<Quotes
-	data-pbl-quotes
-	{...attrs}
-	class:list={['relative w-full', 'py-[calc(var(--space)*3)]', classes]}>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus et,
-	laborum consequatur facere inventore corporis id ad aperiam obcaecati ipsam
-	sed voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.Lorem ipsum dolor sit amet, consectetur
-	adipisicing elit. Voluptatibus et, laborum consequatur facere inventore
-	corporis id ad aperiam obcaecati ipsam sed voluptate non error nesciunt
-	ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum dolor sit
-	amet, consectetur adipisicing elit. Voluptatibus et, laborum consequatur
-	facere inventore corporis id ad aperiam obcaecati ipsam sed voluptate non
-	error nesciunt ullam porro accusamus accusantium? Necessitatibus.Lorem ipsum
-	dolor sit amet, consectetur adipisicing elit. Voluptatibus et, laborum
-	consequatur facere inventore corporis id ad aperiam obcaecati ipsam sed
-	voluptate non error nesciunt ullam porro accusamus accusantium?
-	Necessitatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	Voluptatibus et, laborum consequatur facere inventore corporis id ad aperiam
-	obcaecati ipsam sed voluptate non error nesciunt ullam porro accusamus
-	accusantium? Necessitatibus.
+<Quotes data-pbl-quotes {...attrs} class:list={['w-full', classes]}>
+	{
+		list.map(({ full, author }) => (
+			<blockquote class='rotate-[-5deg] origin-top-left'>
+				<p
+					class:list={[
+						'text-[1.35rem] leading-tight font-script',
+						'text-(--primary-fixed)',
+						'max-w-[50ch]',
+					]}>
+					{full}
+				</p>
+
+				<cite
+					class:list={['not-italic block pt-2', 'text-sm font-sans']}>
+					<span class='font-medium'>{author.name}</span>
+					<span class='mx-2 opacity-60'>—</span>
+					<span>{author.byline}</span>
+				</cite>
+			</blockquote>
+		))
+	}
 </Quotes>
