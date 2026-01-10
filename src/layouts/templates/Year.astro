@@ -12,6 +12,7 @@ import Playhead from '@blocks/controls/Playhead.astro'
 import Carousel from '@composites/Carousel.astro'
 import ReelReveal from '@blocks/modals/ReelReveal.astro'
 import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
+import Quotes from '@composites/Quotes.astro'
 
 type VideoData = {
 	title: string
@@ -135,8 +136,15 @@ const v = data.video
 			year='2025'
 			class:list={[
 				'col-span-full row-start-7',
-				'lg:-mt-[calc(var(--space)*3.5)]',
-				'z-50',
+				'lg:-mt-[calc(var(--space)*3)]',
+				'z-30',
+			]}
+		/>
+
+		<Quotes
+			class:list={[
+				'col-span-full row-start-8',
+				'z-30',
 			]}
 		/>
 	</div>
