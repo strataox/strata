@@ -7,8 +7,11 @@ import { _q } from '@scripts/utils/snips'
 gsap.registerPlugin(ScrollTrigger)
 
 export const _revealZoom = () => {
-	const root = _q('[data-pbl-reveal-zoom]')
-	const inner = root.firstElementChild
+    const root = _q('[data-pbl-reveal-zoom]')
+    if (!root) return
+    
+    const inner = root.firstElementChild
+    if (!inner) return
 
 	const reduceMotion =
 		globalThis.matchMedia &&
