@@ -1,0 +1,16 @@
+---
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+}
+
+const { tag: Grid = 'div', class: classes, ...attrs } = Astro.props as Props
+---
+
+<Grid
+	{...attrs}
+	class:list={[
+		'grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 auto-rows-min items-start',
+		classes,
+	]}>
+	<slot />
+</Grid>

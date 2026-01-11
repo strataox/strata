@@ -1,0 +1,24 @@
+---
+// @layouts/shell/Footer.astro
+
+import Icon from '@atoms/Icon.astro'
+import Grid from '@layouts/core/Grid.astro'
+
+const { class: classes, ...attrs } = Astro.props as Props
+---
+
+<footer {...attrs} class:list={['relative overflow-clip', classes]}>
+	<Grid>
+		<div class:list={['col-span-full', 'p-(--space)']}>
+			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint
+			quisquam nihil ipsa dicta necessitatibus amet ipsum eum quas optio,
+			maiores molestiae asperiores tempora aliquam iste delectus
+			consequuntur quidem exercitationem perspiciatis.
+		</div>
+		<Icon
+			name='pebble-layers'
+			class:list={['col-span-full']}
+			aria-hidden='true'
+		/>
+	</Grid>
+</footer>

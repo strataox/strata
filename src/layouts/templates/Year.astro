@@ -13,6 +13,8 @@ import Carousel from '@composites/Carousel.astro'
 import ReelReveal from '@blocks/modals/ReelReveal.astro'
 import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
 import Quotes from '@composites/Quotes.astro'
+import Grid from '@layouts/core/Grid.astro'
+import Footer from '@layouts/shell/Footer.astro'
 
 type VideoData = {
 	title: string
@@ -57,8 +59,7 @@ const v = data.video
 <div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
 	<Backdrop />
 
-	<div
-		class='grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 auto-rows-min items-start'>
+	<Grid>
 		<header class='pbl-header col-span-full p-(--space)'>
 			<Icon name='logo' class='w-[clamp(6rem,7vw,7.5rem)]' />
 		</header>
@@ -155,7 +156,9 @@ const v = data.video
 				'z-30',
 			]}
 		/>
-	</div>
+
+		<Footer class:list={['col-span-full', 'row-start-9']} />
+	</Grid>
 
 	<ReelReveal />
 </div>
