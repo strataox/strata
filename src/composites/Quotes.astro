@@ -67,11 +67,14 @@ const list = quotes.filter((q) => q.full)
 				{i < list.length - 1 && (
 					<div
 						class:list={[
-							'flex justify-center py-[calc(var(--space)*1.25)]',
+							'flex justify-center pt-[calc(var(--space)*1.25)] pb-[calc(var(--space)*1.75)]',
 							'relative',
 						]}
 						aria-hidden='true'>
-						<Icon name='wave' class='w-full max-w-26  text-(--primary)/20' />
+						<Icon
+							name='wave'
+							class='w-full max-w-26  text-(--primary)/15'
+						/>
 					</div>
 				)}
 			</blockquote>
