@@ -1,9 +1,10 @@
 @layer base {
 	:root {
 		/* Semantic usage, light */
-		--text-emphasis: var(--color-blue-900);
-		--text-body: var(--color-slate-500);
-		--text-body-dark-fixed: var(--color-slate-500);
+		--emphasis: var(--color-blue-900);
+		--body: var(--color-slate-500);
+		--body-dark-fixed: var(--color-slate-500);
+		--text-fallback-fixed: var(--color-slate-700);
 
 		--border-default: var(--color-blue-100);
 
