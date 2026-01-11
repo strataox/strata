@@ -3,18 +3,24 @@
 
 import Icon from '@atoms/Icon.astro'
 import Grid from '@layouts/core/Grid.astro'
+import { site } from '@scripts/data/get-meta'
 
 const { class: classes, ...attrs } = Astro.props as Props
+const currentYear = new Date().getFullYear()
+const meta = site
+const copyright = `© ${currentYear} ${meta.legalName}. ${meta.declaration}`
 ---
 
 <footer {...attrs} class:list={['relative overflow-clip', classes]}>
 	<Grid class:list={['flex flex-col justify-between h-full']}>
-		<div class:list={['col-span-full', 'p-(--space)']}>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint
-			quisquam nihil ipsa dicta necessitatibus amet ipsum eum quas optio,
-			maiores molestiae asperiores tempora aliquam iste delectus
-			consequuntur quidem exercitationem perspiciatis.
-		</div>
+		<small
+			class:list={[
+				'col-span-full',
+				'p-(--space) text-base',
+				'text-(--body)',
+			]}
+			set:text={copyright}
+		/>
 		<Icon
 			name='pebble-layers'
 			class:list={['col-span-full']}

@@ -19,6 +19,16 @@ export const meta = defineCollection({
 					src: z.string(),
 					alt: z.string(),
 				}),
+				legalName: z
+					.string()
+					.max(55, 'Legal name must not exceed 55 characters'),
+				declaration: z
+					.string()
+					.max(
+						500,
+						'Legal declaration must not exceed 500 characters',
+					)
+					.optional(),
 			}),
 		}),
 })
