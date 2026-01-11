@@ -1,5 +1,6 @@
 ---
 // @composites/Quotes.astro
+import Icon from '@atoms/Icon.astro'
 
 interface QuoteAuthor {
 	name: string
@@ -64,11 +65,13 @@ const list = quotes.filter((q) => q.full)
 				</cite>
 
 				{i < list.length - 1 && (
-					<div class='flex justify-center py-[calc(var(--space)*2)]'>
-						<span
-							set:text={'&'}
-							class='font-script text-2xl text-(--primary)/50 leading-none'
-						/>
+					<div
+						class:list={[
+							'flex justify-center py-[calc(var(--space)*1.25)]',
+							'relative',
+						]}
+						aria-hidden='true'>
+						<Icon name='wave' class='w-full max-w-26  text-(--primary)/20' />
 					</div>
 				)}
 			</blockquote>
