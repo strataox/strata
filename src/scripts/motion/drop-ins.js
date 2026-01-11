@@ -15,18 +15,12 @@ export function _dropIns() {
 	if (reduceMotion) return
 
 	const staggerIn = (el) => {
-		gsap.set(el, {
+		gsap.from(el, {
 			autoAlpha: 0,
 			y: 24,
 			rotate: -0.5,
 			transformOrigin: '50% 50%',
 			willChange: 'transform, opacity',
-		})
-
-		gsap.to(el, {
-			autoAlpha: 1,
-			y: 0,
-			rotate: 0,
 			duration: 0.5,
 			ease: 'power2.out',
 			scrollTrigger: {
