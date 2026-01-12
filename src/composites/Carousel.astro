@@ -54,8 +54,7 @@ const imgSrc = (url: string) =>
 						<button
 							type='button'
 							data-pbl-tap-zoom
-							aria-label={item.altText ?? item.title}
-							class:list={['block cursor-zoom-in']}>
+							aria-label={item.altText ?? item.title}>
 							<img
 								src={imgSrc(item.image)}
 								alt={item.altText ?? item.title}

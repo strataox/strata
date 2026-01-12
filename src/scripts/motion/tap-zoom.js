@@ -10,119 +10,75 @@ export function _tapZoom() {
 
 	const close = () => {
 		if (!active) return
+		const { tl, clone, backdrop, cleanup } = active
 
-		const { clone, backdrop, cleanup } = active
 		cleanup()
 
-		gsap.to(backdrop, {
-			autoAlpha: 0,
-			duration: 0.18,
-			ease: 'none',
+		tl.eventCallback('onReverseComplete', () => {
+			clone.remove()
+			backdrop.remove()
+			active = null
 		})
-
-		gsap.to(clone, {
-			x: 0,
-			y: 0,
-			scale: 1,
-			duration: 0.5,
-			ease: 'expo.inOut',
-			onComplete: () => {
-				clone.remove()
-				backdrop.remove()
-				active = null
-			},
-		})
+		tl.reverse()
 	}
 
 	const open = (img) => {
-		const startRect = img.getBoundingClientRect()
-		const w = startRect.width
-		const h = startRect.height
-		if (!w || !h) return
+		const rect = img.getBoundingClientRect()
+		if (!rect.width || !rect.height) return
 
 		const vw = window.innerWidth
 		const vh = window.innerHeight
-
 		const pad = Math.max(16, Math.round(vw * 0.04))
-		const maxW = vw - pad * 2
-		const maxH = vh - pad * 2
 
-		// contain within viewport, still feels like "fills width" when height allows
-		const scale = Math.min(maxW / w, maxH / h)
+		const scale = Math.min(
+			(vw - pad * 2) / rect.width,
+			(vh - pad * 2) / rect.height,
+		)
 
-		const targetW = w * scale
-		const targetH = h * scale
-		const targetLeft = (vw - targetW) / 2
-		const targetTop = (vh - targetH) / 2
-
-		const x = targetLeft - startRect.left
-		const y = targetTop - startRect.top
+		const x = (vw - rect.width * scale) / 2 - rect.left
+		const y = (vh - rect.height * scale) / 2 - rect.top
 
 		const backdrop = document.createElement('div')
-		backdrop.setAttribute('data-pbl-tap-zoom-backdrop', 'true')
-		backdrop.style.position = 'fixed'
-		backdrop.style.inset = '0'
-		backdrop.style.background = 'rgba(0,0,0,0.55)'
-		backdrop.style.backdropFilter = 'blur(10px)'
-		backdrop.style.webkitBackdropFilter = 'blur(10px)'
-		backdrop.style.opacity = '0'
-		backdrop.style.zIndex = '9998'
+		backdrop.style.cssText =
+			'position:fixed,inset:0'.replace(',', ';') +
+			';background:rgba(0,0,0,.3);backdrop-filter:blur(14px);opacity:0;z-index:9998'
 
 		const clone = img.cloneNode(true)
-		clone.setAttribute('data-pbl-tap-zoom-clone', 'true')
-		clone.style.position = 'fixed'
-		clone.style.left = `${startRect.left}px`
-		clone.style.top = `${startRect.top}px`
-		clone.style.width = `${w}px`
-		clone.style.height = `${h}px`
-		clone.style.objectFit = 'contain'
-		clone.style.margin = '0'
-		clone.style.zIndex = '9999'
-		clone.style.transformOrigin = '0 0'
-		clone.style.willChange = 'transform'
-		clone.style.cursor = 'zoom-out'
-		clone.style.borderRadius = 'inherit'
+		clone.style.cssText =
+			`position:fixed;left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;` +
+			'object-fit:contain;transform-origin:0 0;will-change:transform;cursor:zoom-out;z-index:9999'
 
-		document.body.appendChild(backdrop)
-		document.body.appendChild(clone)
+		document.body.append(backdrop, clone)
 
-		const onKey = (ev) => {
-			if (ev.key === 'Escape') close()
-		}
+		const tl = gsap.timeline({
+			defaults: { ease: 'expo.inOut', duration: 0.6 },
+		})
 
+		tl.to(backdrop, { autoAlpha: 1 }, 0).to(clone, { x, y, scale }, 0)
+
+		const onKey = (e) => e.key === 'Escape' && close()
 		const onScroll = () => close()
 
 		const cleanup = () => {
 			window.removeEventListener('keydown', onKey)
-			window.removeEventListener('scroll', onScroll, true)
 			window.removeEventListener('wheel', onScroll, true)
 			window.removeEventListener('touchmove', onScroll, true)
 		}
 
-		active = { clone, backdrop, cleanup }
+		active = { tl, clone, backdrop, cleanup }
 
 		window.addEventListener('keydown', onKey)
-		window.addEventListener('scroll', onScroll, true)
-		window.addEventListener('wheel', onScroll, true)
-		window.addEventListener('touchmove', onScroll, true)
+		window.addEventListener('wheel', onScroll, {
+			capture: true,
+			passive: true,
+		})
+		window.addEventListener('touchmove', onScroll, {
+			capture: true,
+			passive: true,
+		})
 
-		backdrop.addEventListener('click', close, { once: true })
+		backdrop.addEventListener('click', close)
 		clone.addEventListener('click', close)
-
-		gsap.set(backdrop, { autoAlpha: 0 })
-		gsap.to(backdrop, { autoAlpha: 1, duration: 0.18, ease: 'none' })
-
-		gsap.fromTo(
-			clone,
-			{ x: 0, y: 0, scale: 1 },
-			{
-				x,
-				y,
-				scale,
-				duration: 0.65,
-				ease: 'expo.inOut',
-			},
-		)
 	}
 
 	triggers.forEach((btn) => {
@@ -130,13 +86,10 @@ export function _tapZoom() {
 
 		btn.addEventListener('click', (e) => {
 			e.preventDefault()
-
 			if (active) return close()
 
 			const img = _q('img', btn)
-			if (!img) return
-
-			open(img)
+			if (img) open(img)
 		})
 	})
 }
