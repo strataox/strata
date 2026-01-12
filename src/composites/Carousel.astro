@@ -51,19 +51,19 @@ const imgSrc = (url: string) =>
 							'shrink-0',
 							'snap-center transform-[translateZ(0)]',
 						]}>
-						<button
-							type='button'
+						<img
+							src={imgSrc(item.image)}
+							alt={item.altText ?? item.title}
 							data-pbl-tap-zoom
-							aria-label={item.altText ?? item.title}>
-							<img
-								src={imgSrc(item.image)}
-								alt={item.altText ?? item.title}
-								class:list={[
-									'w-full object-contain',
-									'h-auto max-h-96 md:max-h-128 lg:max-h-160',
-								]}
-							/>
-						</button>
+							tabindex='0'
+							role='button'
+							class:list={[
+								'block',
+								'w-full object-contain',
+								'h-auto max-h-96 md:max-h-128 lg:max-h-160',
+								'cursor-zoom-in',
+							]}
+						/>
 					</li>
 				))
 			}
