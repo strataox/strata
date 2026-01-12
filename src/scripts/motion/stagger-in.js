@@ -21,7 +21,7 @@ export function _staggerIn() {
 			scrollTrigger: {
 				trigger: el,
 				start: 'top 90%',
-				toggleActions: 'play none none reverse',
+				toggleActions: 'play none none none',
 			},
 		})
 	})
