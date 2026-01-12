@@ -17,9 +17,9 @@ export function _dropIns() {
 	const staggerIn = (el) => {
 		gsap.from(el, {
 			autoAlpha: 0,
-			y: 24,
-			rotate: -0.5,
-			transformOrigin: '50% 50%',
+			y: 48,
+			rotate: '5deg',
+			transformOrigin: '100% 50%',
 			willChange: 'transform, opacity',
 			duration: 0.5,
 			ease: 'power2.out',
