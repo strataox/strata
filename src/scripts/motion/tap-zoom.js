@@ -27,9 +27,7 @@ export function _tapZoom() {
 		if (!img) return
 
 		activeItem = item
-		openBox()
-
-		image.src = img.currentSrc || img.src || ''
+		image.src = img.currentSrc || img.src
 
 		ready(image, () => {
 			Flip.fit(image, img, { scale: true })
@@ -41,7 +39,9 @@ export function _tapZoom() {
 				ease: 'power2.inOut',
 				scale: true,
 			})
-		})
+        })
+
+        openBox()
 	}
 
 	function hideBox() {
