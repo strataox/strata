@@ -1,0 +1,28 @@
+---
+// @blocks/modals/Zoombox.astro
+
+import Avatar from '@atoms/Avatar.astro'
+
+interface Props extends HTMLAttributes {
+	tag?: keyof HTMLElementTagNameMap
+	class?: string
+}
+
+const { tag: Zoombox = 'div', class: classes, ...attrs } = Astro.props as Props
+---
+
+<Zoombox
+	data-pbl-tap-zoombox
+	class:list={[
+		'fixed inset-0',
+		'flex justify-center items-center',
+		'cursor-zoom-out invisible pointer-events-none overflow-hidden',
+		'z-50',
+		classes,
+	]}
+	aria-hidden='true'>
+	<img
+		alt=''
+		class:list={['max-w-full max-h-dvh', 'object-contain']}
+	/>
+</Zoombox>

@@ -15,6 +15,7 @@ import { _getYouTubeId } from '@scripts/utils/get-youtube-id'
 import Quotes from '@composites/Quotes.astro'
 import Grid from '@layouts/core/Grid.astro'
 import Footer from '@layouts/shell/Footer.astro'
+import Zoombox from '@blocks/modals/Zoombox.astro'
 
 type VideoData = {
 	title: string
@@ -157,12 +158,9 @@ const v = data.video
 			]}
 		/>
 
-		<Footer
-			class:list={[
-				'col-span-full row-start-9',
-			]}
-		/>
+		<Footer class:list={['col-span-full row-start-9']} />
 	</Grid>
 
 	<ReelReveal />
+    <Zoombox />
 </div>

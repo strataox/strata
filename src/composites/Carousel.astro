@@ -46,14 +46,11 @@ const imgSrc = (url: string) =>
 			gallery.map((item) => (
 				<li
 					data-pbl-carousel-slide
-					class:list={[
-						'shrink-0',
-						'snap-center transform-[translateZ(0)]',
-					]}>
+					data-pbl-tap-zoom
+					class:list={['shrink-0 snap-center']}>
 					<img
 						src={imgSrc(item.image)}
 						alt={item.altText ?? item.title}
-						data-pbl-tap-zoom
 						tabindex='0'
 						role='button'
 						class:list={[
@@ -66,25 +63,4 @@ const imgSrc = (url: string) =>
 			))
 		}
 	</ul>
-
-	<div
-		data-pbl-tap-zoom-detail
-		class:list={[
-			'fixed left-1/2 top-0 w-full h-dvh',
-			'-translate-x-1/2',
-			'cursor-zoom-out',
-			'invisible',
-			'z-50',
-			'pointer-events-none',
-		]}
-		aria-hidden='true'>
-		<img
-			data-pbl-tap-zoom-detail-img
-			alt=''
-			class:list={[
-				'block w-screen h-dvh',
-				'object-contain',
-			]}
-		/>
-	</div>
 </Carousel>
