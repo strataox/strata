@@ -34,38 +34,36 @@ const imgSrc = (url: string) =>
 		'py-[calc(var(--space)*4)] lg:py-[calc(var(--space)*3)]',
 		classes,
 	]}>
-	<div data-pbl-carousel-inner>
-		<ul
-			data-pbl-carousel-track
-			class:list={[
-				'flex items-center gap-[calc(var(--space)/2)]',
-				'overflow-x-auto',
-				'snap-x snap-mandatory select-none touch-pan-x touch-pan-y touch-pinch-zoom',
-				'[scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]',
-			]}>
-			{
-				gallery.map((item) => (
-					<li
-						data-pbl-carousel-slide
-						class:list={[
-							'shrink-0',
-							'snap-center transform-[translateZ(0)]',
-						]}>
-						<img
-							src={imgSrc(item.image)}
-							alt={item.altText ?? item.title}
-							data-pbl-tap-zoom
-							tabindex='0'
-							role='button'
-							class:list={[
-								'block',
-								'w-full object-contain',
-								'h-auto max-h-96 md:max-h-128 lg:max-h-160',
-							]}
-						/>
-					</li>
-				))
-			}
-		</ul>
-	</div>
+    <ul
+        data-pbl-carousel-track
+        class:list={[
+            'flex items-center gap-[calc(var(--space)/2)]',
+            'overflow-x-auto',
+            'snap-x snap-mandatory select-none touch-pan-x touch-pan-y touch-pinch-zoom',
+            '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden [-webkit-overflow-scrolling:touch]',
+        ]}>
+        {
+            gallery.map((item) => (
+                <li
+                    data-pbl-carousel-slide
+                    class:list={[
+                        'shrink-0',
+                        'snap-center transform-[translateZ(0)]',
+                    ]}>
+                    <img
+                        src={imgSrc(item.image)}
+                        alt={item.altText ?? item.title}
+                        data-pbl-tap-zoom
+                        tabindex='0'
+                        role='button'
+                        class:list={[
+                            'block',
+                            'w-full object-contain',
+                            'h-auto max-h-96 md:max-h-128 lg:max-h-160',
+                        ]}
+                    />
+                </li>
+            ))
+        }
+    </ul>
 </Carousel>
