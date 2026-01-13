@@ -33,7 +33,7 @@ export const _revealZoom = () => {
 
 		tl.fromTo(
 			root,
-			{ clipPath: 'inset(20% 15% 20% 15% round 400px)' },
+			{ clipPath: 'inset(25% 15% 25% 15% round 200px)' },
 			{ clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none' },
 			0,
 		)
