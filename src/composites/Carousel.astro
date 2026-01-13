@@ -29,7 +29,7 @@ const imgSrc = (url: string) =>
 	data-pbl-reveal-zoom
 	{...attrs}
 	class:list={[
-		'relative w-full',
+		'w-full',
 		'bg-black',
 		'py-[calc(var(--space)*4)] lg:py-[calc(var(--space)*3)]',
 		classes,
@@ -67,7 +67,6 @@ const imgSrc = (url: string) =>
 		}
 	</ul>
 
-	{/* Flip target, always present, kept empty until activated */}
 	<div
 		data-pbl-tap-zoom-detail
 		class:list={[
@@ -75,7 +74,7 @@ const imgSrc = (url: string) =>
 			'-translate-x-1/2',
 			'cursor-zoom-out',
 			'invisible',
-			'z-9999',
+			'z-50',
 			'pointer-events-none',
 		]}
 		aria-hidden='true'>
@@ -85,7 +84,6 @@ const imgSrc = (url: string) =>
 			class:list={[
 				'block w-screen h-dvh',
 				'object-contain',
-				'relative z-10',
 			]}
 		/>
 	</div>
