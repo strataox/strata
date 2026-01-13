@@ -2,81 +2,100 @@
 
 import gsap from 'gsap'
 import Flip from 'gsap/Flip'
-import { _ql, _q } from '@scripts/utils/snips'
+import { _q } from '@scripts/utils/snips'
 
 gsap.registerPlugin(Flip)
 
 export function _tapZoom() {
-    const items = gsap.utils.toArray('[data-pbl-tap-zoom]')
+	const items = gsap.utils.toArray('[data-pbl-tap-zoom]')
+	if (!items.length) return
+
 	const box = _q('[data-pbl-tap-zoombox]')
-	const boxImg = _q('img', box)
+	const boxImg = box ? _q('img', box) : null
+	if (!box || !boxImg) return
 
 	let activeItem = null
 
+	items.forEach((item) => item.addEventListener('click', () => showBox(item)))
+	box.addEventListener('click', hideBox)
+	window.addEventListener('keydown', (e) => e.key === 'Escape' && hideBox())
+
 	function showBox(item) {
-		if (!box || !boxImg) return
 		if (activeItem) return hideBox()
 
 		const img = _q('img', item)
 		if (!img) return
 
-		const onLoad = () => {
-            Flip.fit(box, item, { scale: true, fitChild: boxImg })
+		activeItem = item
+		openBox()
 
-			const state = Flip.getState(box)
-			gsap.set(box, { clearProps: true })
-			gsap.set(box, {
-				visibility: 'visible',
-				overflow: 'hidden',
-			})
+		boxImg.src = img.currentSrc || img.src || ''
+
+		ready(boxImg, () => {
+			Flip.fit(boxImg, img, { scale: true })
+			const state = Flip.getState(boxImg)
+			gsap.set(boxImg, { clearProps: true })
 
 			Flip.from(state, {
-				duration: 0.3,
+				duration: 0.55,
 				ease: 'power2.inOut',
 				scale: true,
-				onComplete: () => gsap.set(box, { overflow: 'hidden' }),
 			})
-
-			boxImg.removeEventListener('load', onLoad)
-			document.addEventListener('click', hideBox)
-		}
-
-		// Swap only the image
-		boxImg.addEventListener('load', onLoad)
-		boxImg.src = img.src
-
-		gsap.to(items, {
-			opacity: 0.3,
-		}).kill(item)
-
-		activeItem = item
+		})
 	}
 
 	function hideBox() {
-		if (!box || !boxImg || !activeItem) return
+		if (!activeItem) return
 
-		document.removeEventListener('click', hideBox)
-		gsap.set(box, { overflow: 'hidden' })
+		const img = _q('img', activeItem)
+		if (!img) return closeBox()
 
-		const state = Flip.getState(box)
-
-		Flip.fit(box, activeItem, { scale: true, fitChild: boxImg })
-
-		const tl = gsap.timeline()
-		tl.to(items, {
-			opacity: 1,
-		})
+		const state = Flip.getState(boxImg)
+		Flip.fit(boxImg, img, { scale: true })
 
 		Flip.from(state, {
+			duration: 0.5,
+			ease: 'power2.inOut',
 			scale: true,
-			duration: 0.3,
-			onInterrupt: () => tl.kill(),
-		}).set(box, { visibility: 'hidden' })
-
-		activeItem = null
+			onComplete: closeBox,
+			onInterrupt: closeBox,
+		})
 	}
 
-	items.forEach((item) =>
-		item.addEventListener('click', () => showBox(item)),
-	)
+	function openBox() {
+		document.documentElement.classList.add('overflow-hidden')
+		box.classList.remove('invisible', 'pointer-events-none')
+		box.setAttribute('aria-hidden', 'false')
+		gsap.to(box, { opacity: 1, duration: 0.18, ease: 'none' })
+		document.addEventListener('click', onDocClick, true)
+	}
+
+	function closeBox() {
+		document.removeEventListener('click', onDocClick, true)
+		document.documentElement.classList.remove('overflow-hidden')
+		gsap.to(box, {
+			opacity: 0,
+			duration: 0.18,
+			ease: 'none',
+			onComplete: () => {
+				box.classList.add('invisible', 'pointer-events-none')
+				box.setAttribute('aria-hidden', 'true')
+				boxImg.removeAttribute('src')
+				activeItem = null
+			},
+		})
+	}
+
+	function onDocClick(e) {
+		if (!activeItem) return
+		if (box.contains(e.target)) return
+		hideBox()
+	}
+
+	function ready(img, done) {
+		if (!img.src) return done()
+		if (img.decode) img.decode().then(done).catch(done)
+		else if (img.complete) done()
+		else img.addEventListener('load', done, { once: true })
+	}
 }

@@ -14,15 +14,15 @@ const { tag: Zoombox = 'div', class: classes, ...attrs } = Astro.props as Props
 <Zoombox
 	data-pbl-tap-zoombox
 	class:list={[
-		'fixed inset-0',
-		'flex justify-center items-center',
-		'cursor-zoom-out invisible pointer-events-none overflow-hidden',
-		'z-50',
+		'fixed inset-0 z-50',
+		'flex items-center justify-center',
+		'invisible pointer-events-none cursor-zoom-out overflow-hidden',
+		'bg-black/40 backdrop-blur-[14px]',
 		classes,
 	]}
 	aria-hidden='true'>
 	<img
 		alt=''
-		class:list={['max-w-full max-h-dvh', 'object-contain']}
+		class:list={['max-w-full max-h-dvh object-contain select-none']}
 	/>
 </Zoombox>
