@@ -16,8 +16,8 @@ const { tag: Zoombox = 'div', class: classes, ...attrs } = Astro.props as Props
 	class:list={[
 		'fixed inset-0 z-50',
 		'flex items-center justify-center',
-		'invisible pointer-events-none cursor-zoom-out overflow-hidden',
-		'bg-black/80 backdrop-blur-md',
+		'cursor-zoom-out invisible pointer-events-none overflow-hidden opacity-0',
+		'bg-black/70 backdrop-blur-xl',
 		classes,
 	]}
 	aria-hidden='true'>

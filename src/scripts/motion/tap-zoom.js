@@ -37,7 +37,7 @@ export function _tapZoom() {
 			gsap.set(image, { clearProps: true })
 
 			Flip.from(state, {
-				duration: 0.5,
+				duration: 0.35,
 				ease: 'power2.inOut',
 				scale: true,
 			})
@@ -50,9 +50,9 @@ export function _tapZoom() {
 		const img = _q('img', activeItem)
 		if (!img) return closeBox()
 
-		const state = Flip.getState(image)
-		Flip.fit(image, img, { scale: true })
+        const state = Flip.getState(image)
 
+		Flip.fit(image, img, { scale: true })
 		Flip.from(state, {
 			duration: 0.4,
 			ease: 'power2.inOut',
@@ -66,7 +66,7 @@ export function _tapZoom() {
 		document.documentElement.classList.add('overflow-hidden')
 		box.classList.remove('invisible', 'pointer-events-none')
 		box.setAttribute('aria-hidden', 'false')
-		gsap.to(box, { opacity: 1, duration: 0.4, ease: 'none' })
+		gsap.to(box, { opacity: 1, duration: 0.5, ease: 'none' })
 		document.addEventListener('click', onDocClick, true)
 	}
 
@@ -75,7 +75,7 @@ export function _tapZoom() {
 		document.documentElement.classList.remove('overflow-hidden')
 		gsap.to(box, {
 			opacity: 0,
-			duration: 0.3,
+			duration: 0.4,
 			ease: 'none',
 			onComplete: () => {
 				box.classList.add('invisible', 'pointer-events-none')
