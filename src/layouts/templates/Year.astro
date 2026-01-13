@@ -57,7 +57,11 @@ const pullsB = pullsAll.slice(splitAt)
 const v = data.video
 ---
 
-<div class='relative isolate max-w-420 mx-auto w-full min-h-dvh overflow-clip'>
+<div
+	class:list={[
+		'relative isolate overflow-clip',
+		'w-full max-w-420 mx-auto min-h-dvh',
+	]}>
 	<Backdrop />
 
 	<Grid>
@@ -162,5 +166,5 @@ const v = data.video
 	</Grid>
 
 	<ReelReveal />
-    <Zoombox />
+	<Zoombox />
 </div>

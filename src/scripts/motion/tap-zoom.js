@@ -16,7 +16,9 @@ export function _tapZoom() {
 
 	let activeItem = null
 
-	images.forEach((item) => item.addEventListener('click', () => showBox(item)))
+	images.forEach((item) =>
+		item.addEventListener('click', () => showBox(item)),
+	)
 	box.addEventListener('click', hideBox)
 	window.addEventListener('keydown', (e) => e.key === 'Escape' && hideBox())
 
@@ -29,7 +31,7 @@ export function _tapZoom() {
 		activeItem = item
 		image.src = img.currentSrc || img.src
 
-        openBox()
+		openBox()
 
 		ready(image, () => {
 			Flip.fit(image, img, { scale: true })
@@ -41,7 +43,7 @@ export function _tapZoom() {
 				ease: 'power2.inOut',
 				scale: true,
 			})
-        })
+		})
 	}
 
 	function hideBox() {
@@ -50,7 +52,7 @@ export function _tapZoom() {
 		const img = _q('img', activeItem)
 		if (!img) return closeBox()
 
-        const state = Flip.getState(image)
+		const state = Flip.getState(image)
 
 		Flip.fit(image, img, { scale: true })
 		Flip.from(state, {
@@ -63,27 +65,44 @@ export function _tapZoom() {
 	}
 
 	function openBox() {
-		document.documentElement.classList.add('overflow-hidden')
-		box.classList.remove('invisible', 'pointer-events-none')
+		box.classList.remove('pointer-events-none')
 		box.setAttribute('aria-hidden', 'false')
 		gsap.to(box, { opacity: 1, duration: 0.5, ease: 'none' })
 		document.addEventListener('click', onDocClick, true)
+
+		window.addEventListener('scroll', onScrollIntent, true)
+		window.addEventListener('wheel', onScrollIntent, {
+			capture: true,
+			passive: true,
+		})
+		window.addEventListener('touchmove', onScrollIntent, {
+			capture: true,
+			passive: true,
+		})
 	}
 
 	function closeBox() {
 		document.removeEventListener('click', onDocClick, true)
-		document.documentElement.classList.remove('overflow-hidden')
+
+		window.removeEventListener('scroll', onScrollIntent, true)
+		window.removeEventListener('wheel', onScrollIntent, true)
+		window.removeEventListener('touchmove', onScrollIntent, true)
+
 		gsap.to(box, {
 			opacity: 0,
 			duration: 0.4,
 			ease: 'none',
 			onComplete: () => {
-				box.classList.add('invisible', 'pointer-events-none')
+				box.classList.add('pointer-events-none')
 				box.setAttribute('aria-hidden', 'true')
 				image.removeAttribute('src')
 				activeItem = null
 			},
 		})
+	}
+
+	function onScrollIntent() {
+		hideBox()
 	}
 
 	function onDocClick(e) {
