@@ -51,8 +51,6 @@ const imgSrc = (url: string) =>
 					<img
 						src={imgSrc(item.image)}
 						alt={item.altText ?? item.title}
-						tabindex='0'
-						role='button'
 						class:list={[
 							'block cursor-zoom-in',
 							'w-full object-contain',

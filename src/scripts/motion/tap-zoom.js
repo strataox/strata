@@ -94,8 +94,6 @@ export function _tapZoom() {
 
 	function ready(img, done) {
 		if (!img.src) return done()
-		if (img.decode) img.decode().then(done).catch(done)
-		else if (img.complete) done()
-		else img.addEventListener('load', done, { once: true })
+		img.decode ? img.decode().then(done, done) : done()
 	}
 }
