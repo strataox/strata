@@ -17,7 +17,7 @@ const {
 } = Astro.props as Props
 
 const gallery = await _getGallery(year, limit)
-const IMG_WIDTH = 1600
+const IMG_WIDTH = 1440
 const imgSrc = (url: string) =>
 	import.meta.env.DEV
 		? url
