@@ -29,6 +29,8 @@ export function _tapZoom() {
 		activeItem = item
 		image.src = img.currentSrc || img.src
 
+        openBox()
+
 		ready(image, () => {
 			Flip.fit(image, img, { scale: true })
 			const state = Flip.getState(image)
@@ -40,8 +42,6 @@ export function _tapZoom() {
 				scale: true,
 			})
         })
-
-        openBox()
 	}
 
 	function hideBox() {
