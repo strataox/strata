@@ -70,12 +70,12 @@ export function _tapZoom() {
 		gsap.to(box, { opacity: 1, duration: 0.5, ease: 'none' })
 		document.addEventListener('click', onDocClick, true)
 
-		window.addEventListener('scroll', onScrollIntent, true)
-		window.addEventListener('wheel', onScrollIntent, {
+		window.addEventListener('scroll', hideBox, true)
+		window.addEventListener('wheel', hideBox, {
 			capture: true,
 			passive: true,
 		})
-		window.addEventListener('touchmove', onScrollIntent, {
+		window.addEventListener('touchmove', hideBox, {
 			capture: true,
 			passive: true,
 		})
@@ -84,9 +84,15 @@ export function _tapZoom() {
 	function closeBox() {
 		document.removeEventListener('click', onDocClick, true)
 
-		window.removeEventListener('scroll', onScrollIntent, true)
-		window.removeEventListener('wheel', onScrollIntent, true)
-		window.removeEventListener('touchmove', onScrollIntent, true)
+		window.addEventListener('scroll', hideBox, true)
+		window.addEventListener('wheel', hideBox, {
+			capture: true,
+			passive: true,
+		})
+		window.addEventListener('touchmove', hideBox, {
+			capture: true,
+			passive: true,
+		})
 
 		gsap.to(box, {
 			opacity: 0,
@@ -99,10 +105,6 @@ export function _tapZoom() {
 				activeItem = null
 			},
 		})
-	}
-
-	function onScrollIntent() {
-		hideBox()
 	}
 
 	function onDocClick(e) {
