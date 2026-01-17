@@ -11,23 +11,22 @@
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.13",
-        "@astrojs/sitemap": "^3.6.0",
+        "@astrojs/sitemap": "^3.7.0",
         "@tailwindcss/vite": "^4.1.18",
-        "astro": "^5.16.6",
-        "astro-seo": "^0.8.4",
+        "astro": "^5.16.11",
+        "astro-seo": "^1.1.0",
         "gsap": "^3.14.2",
         "markdown-it": "^14.1.0",
-        "motion": "^12.23.26",
         "sharp": "^0.34.5",
         "tailwindcss": "^4.1.18",
-        "vite": "^7.3.0",
-        "zod": "^4.2.1"
+        "vite": "^7.3.1",
+        "zod": "^4.3.5"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.19",
-        "node-html-parser": "^7.0.1",
+        "node-html-parser": "^7.0.2",
         "postcss-inline-svg": "^6.0.0",
-        "prettier": "^3.7.4",
+        "prettier": "^3.8.0",
         "unist-util-visit": "^5.0.0"
     }
 }
